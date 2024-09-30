@@ -1,0 +1,625 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,width=160mm,top=25mm,bottom=25mm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsfonts} %police
+\usepackage{setspace}
+\usepackage{stmaryrd} % pour les doubles crochet des ensembles d'entier
+\usepackage[leftbars]{changebar}
+\usepackage{mathtools} % pour les symboles de maths un peu tricky
+\usepackage{tcolorbox} % pour le joli environnement
+\usepackage{tikz} % pour les diagrammes
+\usepackage{enumitem} % pour modifier facilement les items/ ennumérations
+
+\newenvironment{definition}[1]{
+    \begin{tcolorbox}[colframe= white]
+    \textbf{Définition :} (#1)\\
+    }
+    {\end{tcolorbox}}
+
+\newenvironment{preuve}{
+    \begin{changebar}
+    \noindent\textbf{Preuve :}\\}{
+    \begin{flushright}
+    $\square$
+    \end{flushright}
+    \end{changebar}
+}
+
+\newenvironment{prop}{\begin{tcolorbox}[colframe= white]
+    \textbf{Propriété :}\\}
+    {\end{tcolorbox}}
+
+\newenvironment{exemple}{\begin{tcolorbox}[colframe= white]
+    \textbf{Exemple :}\\}
+    {\end{tcolorbox}}
+
+\newenvironment{exo}{\begin{tcolorbox}[colframe= white]
+    \textbf{Exercice :}\\}
+    {\end{tcolorbox}}
+
+\newenvironment{corollaire}{\begin{tcolorbox}[colframe= white]
+    \textbf{Corollaire :}\\}
+    {\end{tcolorbox}}
+
+\newenvironment{lemme}[2][white]{\begin{tcolorbox}[colframe= #1]
+    \textbf{Lemme :} #2\\}
+    {\end{tcolorbox}}
+
+\newenvironment{theoreme}{
+    \begin{tcolorbox}[]
+    \textbf{Théorème :}} 
+    {\end{tcolorbox}}
+
+\newcommand{\remarque}{
+    \noindent\textbf{Remarque :}\\
+}
+
+\newcommand{\mat}[2]{
+    \mathcal{M}_{#1}(\mathbb{#2})
+}
+
+\newcommand{\gl}[2]{
+    \mathcal{\mathbb{G}\mathbb{L}}_{#1}(\mathbb{#2})
+}
+
+\newcommand{\im}[0]{\textrm{Im}}
+
+\newcommand{\fonction}[5]{
+    \begin{array}{l|rcl}
+    #1: & #2 & \longrightarrow & #3 \\
+        & #4 & \longmapsto & #5 
+    \end{array}
+}
+
+\newcommand{\fctsarg}[3]{
+    \begin{array}{lrcl}
+    #1:  & #2 & \longrightarrow & #3 \\
+    \end{array}
+}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\znz}{\Z/n\Z}
+\newcommand{\sn}{\mathbb{S}_{n}}
+
+
+
+\title{Theorie des groupes}
+\author{Bcp de monde... }
+\date{September 2024}
+\newcommand{\dsp}{\displaystyle}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter*{Exemples en tout genres}
+
+
+
+\section{Section1}
+\begin{definition}{distance}
+    mdr a definition d'une distance
+\end{definition}
+\subsection{Sous-section1}
+\begin{theoreme}
+    $$\dim\ker\varphi + \dim \im f = \dim E$$
+\end{theoreme}
+
+\begin{preuve}
+    exemple de preuve
+\end{preuve}
+\subsection{Comment faire un lemme}
+\begin{lemme}[black]{}
+avec la box noire sans nom
+\end{lemme}
+
+\begin{lemme}{nom}
+    sasn la box mais avec le nom
+\end{lemme}
+
+\paragraph{test}
+\begin{lemme}{}
+    sans rien
+\end{lemme}
+
+\chapter{Notion de groupe, morphisme, produit direct}
+
+
+\section{Groupes, sous-groupes, exemples}
+
+\subsection{Définitions}
+\begin{definition}{Groupe}
+Un groupe est un ensemble non vide G munis d'une loi $\ast$ telle que :
+\begin{enumerate}[label=(\roman*)]
+\item $\ast$ est associative
+\item $\ast$ possède un neutre $e\in G$
+\item Tout élément possède un inverse pour $\ast$
+\end{enumerate}
+
+\end{definition}
+
+\begin{definition}{Groupe abélien}
+Un groupe G est dit \underline{abélien} si $\forall (x,y)\in G,~xy=yx$
+\end{definition}
+
+\subsection{Sous-groupes}
+
+\begin{definition}{Sous-groupe}
+Un sous-ensemble H de G est appelé sous-groupe si :\\
+\begin{itemize}[label=$\bullet$]
+\item $e\in H$
+\item $\forall x,y \in H, xy^{1}\in H$
+\end{itemize}
+\end{definition}
+
+\begin{definition}{Groupe fini}
+G est dit fini si il est cardinal fini, on note alors $o(G) = |G|$, appelé ordre de G.
+\end{definition}
+
+
+\subsubsection{Sous-groupe engendré}
+
+\begin{definition}{Sous-groupe engendré par une partie}
+Soient G un groupe et $S\subset G$\\
+Soit $G_{S}$ l'ensemble des sous groupes de G qui contiennent S, on appel sous groupe engendré par S l'ensemble : $ \dsp\langle S\rangle := \bigcap _{H\in G_{S}}H$\\
+Si de plus $\langle S\rangle = G$ on dit que S est une partie génératrice de G ou que S engendre G
+\end{definition}
+
+\begin{definition}{Groupe de type fini}
+Si G est engendré par un unique élément, on dit que G est monogène. \\
+De plus, un groupe monogène fini est dit cyclique si il existe une partie finie $S\subseteq G$ qui engendre G, on dit que G est de type fini.
+\end{definition}
+
+\begin{definition}{Ordre d'un élément}
+\begin{itemize}[label = $\bullet$]
+\item Si $\langle x \rangle$ est infini, on dit que $x$ est d'ordre infini.
+\item Si $\langle x \rangle$ est fini, on dit que $x$ est d'ordre $\lvert\langle x \rangle\rvert$
+\end{itemize}
+Si $x^{n}=e$ alors $o(x)|n$
+\end{definition}
+
+\section{morphismes de groupes}
+\begin{definition}{Morphisme de groupe}
+\\Soit $(G,\ast), (H,\cdot)$ deux groupes. Un morphisme de groupes de G dans H est une application\\
+\\$\fctsarg{f}{G}{H}$ tel que $\forall x,y \in G, f(x \ast y) = f(x) \cdot f(y)$
+\end{definition}
+
+\begin{exo}
+\begin{enumerate}
+\item $f(e_{G})=e_{H}$
+\item $f^{-1}(x)=f(x^{-1})$
+\item $\forall n \in \N~,~ f^{n}(x)=f(x^{n})$
+\item Si $K < G,$ alors $f(K) < H$
+\item Si $K < H,$ alors $f^{-1}(K) < G$
+\end{enumerate}
+\end{exo}
+
+\begin{exemple}
+\begin{enumerate}
+    \item $\fctsarg{\epsilon}{\sn}{\{-1,1\}}$ 
+    \item $\fctsarg{det}{\gl{n}{\R}}{\R^*}$
+    \item $\fctsarg{exp}{\C}{\C^*}$
+    \item Mais $\fctsarg{exp}{\mat{2}{R}}{(\gl{2}{\R},\times)}$
+\end{enumerate}
+\end{exemple}
+
+\subsection{Isomorphismes}
+
+\begin{definition}{Isomorphisme}
+\begin{enumerate}
+    \item Un isomorphisme de $G$ dans $H$ est un morphisme de groupes bijectif.
+    \item $G$ et $H$ sont isomorphe ssi il existe un isomorphisme entre les deux.
+\end{enumerate}
+\end{definition}
+
+\begin{exo}
+    Si $f$ est un isomorphisme alors $f^{-1}$ aussi
+\end{exo}
+
+\begin{exo}
+\begin{enumerate}
+    \item $\Z /4\Z$ et $\Z/2\Z \times \Z/2\Z$ ne sont pas isomorphe
+    \item $\Z/6\Z$ et $\mathbb{S}_n$ ne sont pas isomorphe (car l'un est abélien et l'autre non).
+    \item $\Z/mn\Z$ et $\Z/m\Z \times \znz$ sont isomorphe ssi $m\wedge n = 1$
+\end{enumerate}
+\end{exo}
+
+\begin{definition}{Automorphisme}
+    Un automorphisme est un isomorphisme d'un groupe $G$ dans lui-même. L'ensemble des automorphismes de G se note $Aut(G)$.
+\end{definition}
+
+\begin{exo}
+    Montrer que $Aut(G) < \mathbb{S}_G$, où $\mathbb{S}_{G}$ désigne l'ensemble des bijections de $G$G dans lui même
+\end{exo}
+
+\begin{exo}
+    $\forall g\in G$, on note $\fonction{\sigma_g}{G}{G}{x}{gxg^{-1}}$ (automorphisme intérieur assoccié à g), montrer que $\sigma_g \in Aut(G)$
+\end{exo}
+
+\begin{exo}
+    On note $Int(G)$ l'ensemble des automorphismes intérieurs de $G$, montrer que $Int(G) < Aut(G)$
+\end{exo}
+
+\begin{theoreme}{ (Théorème de Cayley)}\\
+    Tout groupe G est isomorphe à un sous-groupe de $\mathbb{S}_G$. En particulier, si $|G| = n$, alors $G$ est isomorphe à un sous-groupe de $\sn$.
+\end{theoreme}
+
+\begin{preuve}
+    Pour tout $g\in G$, on pose $\fonction{\tau_g}{G}{G}{x}{gx}$ $\tau_g$ est une bijection de $G$ dans $G$. Notons $T_G := \{\tau_g,g\in G\} \subseteq \mathbb{S}_G$.\\
+    \noindent Vérifions que:\\
+    
+    \begin{enumerate}
+    \item $T_G < \mathbb{S}_G$
+    \item $G$ est isomorphe à $T_G$
+    \end{enumerate}
+
+\noindent\underline{Preuve de 1:}
+\begin{itemize}[label = $\bullet$]
+\item $Id_G = \tau_e \in T_G (T_G \neq \emptyset)$
+\item  $\forall g_1,g_2 \in G,\forall x \in G, \tau_{g_1 g_2}(x) = g_1 g_2 x = g_1(g_2 x) = \tau_{g_1}(\tau_{g_2}(x))$, donc on a bien $\tau_{g_1 g_2} = \tau_{g_1} \tau_{g_2}$
+\item $\forall g \in G, \tau_{g^{-1}} \circ \tau_g = \tau_g \circ \tau_{g^{-1}} = Id_G$ Donc $(\tau_g)^{-1} = \tau_{g^{-1}} \in T_G$
+\end{itemize}
+
+\noindent\underline{Preuve de 2:}
+
+    Notons $\fonction{\phi}{G}{T_G}{g}{\tau_g}$
+    Alors $\phi$ est un morphisme (d'après la preuve de 1) $\phi$ est immédiatement surjectif, mais il est également injectif :\\
+Soit $g\in G$ tel que $\tau_g = Id_G$. Alors $\forall x \in G, gx =  x$. Si on prend $x =  e_G$, on obtient $g = e_G$. Donc $Ker(\phi) = {e_G}$, et donc $\phi$ est injectif.
+\end{preuve}
+
+\section{Produits directs}
+
+\begin{definition}{Produit direct}
+    Le groupe "produit direct" de deux groupes $G_1, G_2$ est l'ensemble $G_1 \times G_2$ muni de la loi :\\
+    $\fonction{\cdot}{(G_1 \times G_2)\times(G_1 \times G_2}{G_1 \times G_2}{((x_1 ,x_2),(y_1 ,y_2))}{(x_1 y_1 ,x_2 y_2)}$
+\end{definition}
+
+\begin{exo}
+    vérifier que $G_1 \times G_2$ muni de cette loi ests bien un groupe.
+\end{exo}
+\begin{definition}{Projections et injections canoniques}
+\begin{enumerate}
+    \item Projections canoniques $\fonction{p_i}{G_1 \times G_2}{G_i}{(x_1 ,x_2)}{x_i}$.
+    \item Injections canoniques : $\fonction{q_1}{G_1}{G_1 \times G_2}{x_1}{(x_1 ,e_2)}$ et $\fonction{q_2}{G_2}{G_1 \times G_2}{x_2}{(e_1 ,x_2)}$
+\end{enumerate}
+\end{definition}
+
+\remarque
+    $\im (q_i)$ est isomorphe à $G_i$. Ainsi $G1 \times G_2$ contient un sous-groupe isomorphe à $G_1$, de même pour $G_2$.
+\\
+\remarque
+    $\forall ~x = (x_1 ,x_2) \in G_1 \times G_2,$ on a :\\
+    $x = (p_1 (x), p_2 (x)) = (x_1 ,x_2) = (x_1 ,e_2)(e_1 ,x_2) = (e_1 ,x_2)(x_1 ,e_2) = q_1 (x_1)q_2 (x_2) = q_2(x_2)q_2(x_1)$
+
+\begin{theoreme}
+    Un groupe $G$ est isomorphe au produit direct $G1 \times G_2$ ssi $G$ contient deux sous-groupes $H_1,H_2$ tel que :
+    \begin{enumerate}
+        \item $H_i$ est isomorphe à $G_i (i = 1,2)$
+        \item $h_1 h_2 = h_2 h_1, \forall h_1\in H_1, \forall h_2\in H_2$
+        \item $G = H_1 H_2$
+        \item $H_1 \cap H_1 = \{e_G\}$
+    \end{enumerate}
+\end{theoreme}
+
+\begin{preuve}
+    \fbox{$\Rightarrow$} Supposons qu'il existe $\fctsarg{\phi}{G_1 \times G_2}{G}$ isomorphe.\\
+    
+    \begin{enumerate}
+    \item On a que $ G_{1}\simeq \{G_{1},e_{2}\} \simeq \phi\left(\{G_{1},e_{2}\}\right):=H_{1} $ il suffit alors de remarquer que $H_{1}$ est un sous groupe de G. On construit de même $H_{2}$
+    \item$\forall (h_{1},h_{2})\in H_{1}\times H_{2}$, on note $h'_{1}= (h_{1},e_{2})$ idem pour $h'_{2}$, on a alors : 
+    \begin{center}
+    $\dsp h_1 h_2 = \phi(h_1 'h_2 ') = \phi(h_2 'h_1 ') = h_2 h_1 $
+    \end{center}
+    
+    \item $\forall x \in G, \exists!~x'=(h_{1},h_{2})\in G_{1}\times G_{2}$ tel que $\phi(x')=x$. On a alors :\\
+    \begin{center}
+    $\dsp x = \phi(x') = \phi(h_{1}'h_{2}') = h_{1}h_{2} $
+    \end{center}
+    \item Immédiat
+    \end{enumerate}
+    \noindent\fbox{$\Leftarrow$} Construisons un isomorphisme de $G$ dans $G_1 \times G_2$\\
+    Fait : $\forall g\in G, \exists! (h_1,h_2)\in H_1 \times H_2 $ tel que $g = h_1 h_2$\\
+    En effet : l'existence vient de 3), l'unicité vient de 4) :$g = h_1 h_2 = k_1 k_2$ alors $(k_1)^{-1} h_1 = k_2 (h_2)^{-1}$. Comme $H_1 \cap H_2 = \{e\}$ on obtient $(k_1)^{-1} h_1 = k_2 (h_2)^{-1} = e_G \Rightarrow h_1 = k_1 $ et $h_2 = k_2$\\
+    Notons $\fctsarg{\phi_1}{H_1}{G_1}$ et $\fctsarg{\phi_2}{H_2}{G_2}$ les isomorphismes données par 1).\\
+    Posons $\fonction{\phi}{G}{G_1 \times G_2}{h_1 h_2}{(\phi_1 (h_1),\phi_2 (h_2))}$\\
+    Mq $\phi$ est un morphisme $(\alpha)$, injectif $(\beta)$, surjectif $\gamma$\\
+    $(\alpha): \phi(h_1 h_2 h_1 'h_2 ') =\phi(h_1 h_1 'h_2 h_2') = (\phi_1(h_1 h_1'),\phi_2(h_2 h_2 ')) = (\phi_1(h_1),\phi_1(h_1 '),\phi_2(h_2)\phi_2(h_2 ')) = (\phi_1 (h_1),\phi_2 (h_2)) (\phi_1 (h_1 '),\phi_2(h_2 ')) = \phi(g)\phi(g')$\\
+    $(\beta):$ Soit $x = h_1 h_2$ tel que $\phi(x) = (\phi_1 (h_1),\phi_2 (h_2)) = (e_1,e_2)$\\
+    Alors $\phi_1(h_1) = e_1$ et $\phi_2 (h_2) = e_2 \Rightarrow h_1 = h_2 = e_G$\\
+    $(\gamma):$ Soit $x = (x_1,x_2) \in G_1 \times G_2$, soit $(h_1,h_2)$ tel que $\phi_i (h_i) = x_i$, alors $x = (\phi_1 (h_1),\phi_2 (h_2)) = \phi(h_1,h_2)$, cela montre la surjectivité de $\phi$.
+\end{preuve}
+
+\begin{exemple}
+$(\Z / 2^{\alpha}\Z,+,\times) est anneau$. On note $(\Z / 2^{\alpha}\Z)^{\times}$ l'ensemble des éléments inversibles de l'anneau (pour la loi $\times$). Si $\alpha \ge 3$, $(\Z / 2^{\alpha}\Z)^{\times}$ est isomorphe à $(\Z /2^{\alpha -2}\Z)\times(\Z / 2\Z)$
+\end{exemple}
+
+\chapter{Classes modulo un sous-groupe, sous-groupes distingués}
+
+
+\section{Classes à droite, classes à gauche}
+
+Soit $H < G$. On définit $x\mathcal{R}_H y \iff xy^{-1} \in H$ et $x _{H}\mathcal{R} y \iff x^{-1}y \in H$
+
+\begin{exemple}
+\begin{enumerate}
+    \item $\mathcal{R}_H$ et $_{H}\mathcal{R}$ définissent deux relations d'équivalences
+\item La classe d'équivalence de $x$ pour $\mathcal{R}_H$ est $Hx$ appelée classe à droite de $x$ modulo $H$, idem pour $_{H}\mathcal{R}$
+\end{enumerate}
+\end{exemple}
+
+\begin{exemple}
+    Dans $\mathbb{S}_3, \sigma := (1,2,3),\tau := (1,2)$\\
+    $\mathbb{S}_3 \{e,\sigma,\sigma^2,\tau,\tau\sigma,\sigma\tau\}$, pour $H = \{e,\tau \}$\\
+    $H_{\sigma} = \{\sigma, \tau\sigma\}, H_{\sigma^2} = \{\sigma^2,\tau\sigma^2 (=\sigma\tau)\}$\\
+    $\sigma H = \{\sigma,\sigma\tau\},\sigma^2 H = \{\sigma^2,\sigma^2 \tau (=\tau \sigma)\}$\\
+    donc $\sigma H \neq H \sigma$
+\end{exemple}
+
+\begin{exemple}
+    Si $G$ est abélien, on a $xH = Hx,\forall x \in G$.
+\end{exemple}
+
+\remarque
+$\forall g \in G, \fonction{\tau_g}{G}{G}{x}{gx}$ est une bijection. En particulier, $\tau_g|_H$ est une bijection de $H$ sur $gH$. De même, $\fonction{\rho_g}{G}{G}{x}{xg}$, alors $\rho_g|_H$ est une bijection de $H$ sur $Hg$.
+
+\remarque 
+Soit $\{e\}\cup\{x_i,i\in I\}$ un système de représentants des classes à gauche modulo H. On a alors $G = H \sqcup \displaystyle\bigsqcup_{i \in I} x_i H$ (union disjointe).
+
+\remarque
+L'application $\fctsarg{}{x_i H}{H (x_i)^{-1}}$ est une bijection de l'ensemble des classes à gauche sur l'ensemble des classes à droite.
+
+\begin{definition}{Indice de H dans G}
+    L'indice de $H$ dans $G$ est le cardinal (fini ou infini) de l'ensemble des classes à gauche (= cardinal de l'ensemble des classes à droite), il est noté $[G:H]$
+\end{definition}
+
+On en déduit le théorème de Lagrange :
+\begin{theoreme}{Théorème de Lagrange}
+    Soit $G$ un groupe fini et $H < G$. Alors :
+    \begin{enumerate}
+        \item $|G| = |H|[G:H]$
+        \item $\forall x \in G, o(x)$ $|$ $|G|$
+    \end{enumerate}
+\end{theoreme}
+
+\section{Sous-groupes distingués}
+
+\begin{definition}
+    Soit $G$ un groupe fini, $H < G$ est dit distingué (ou normal) dans $G$ ssi $\forall x \in G, xH = Hx$.\\
+    Le cas échéant on note : $H \triangleleft $
+\end{definition}
+
+\begin{definition}
+    Un groupe $G$ est dit simple ssi ses seuls sous-groupes distingué sont $\{e\}$ et $G$.
+\end{definition}
+
+\remarque
+Si $G$ est abélien, tout $H < G$ est distingué.
+
+\begin{exemple}
+    Soit $H < G$. Alors $H \triangleleft G \iff \forall g \in G, gHg^{-1} = H$
+\end{exemple}
+
+\begin{prop}
+    Soit $_H$ \textbackslash $G$ l'ensemble des classes à gauche modulo $H$.\\
+    L'application $\fctsarg{}{(xH,yH)}{xyH}$ est bien définie ssi $H \triangleleft G$.\\
+    Idem pour les classes à droites $G/H$.
+\end{prop}
+
+\begin{preuve}
+$\Rightarrow)$ Soit $h \in H,y \in G$, l'application est bien définie, donc $egH = hgH$ donc $yH = hgH$ donc $H = y^{-1}hyH$, donc $y^{-1}hy \in H$.\\
+$\Leftarrow)$ Si $x,x' \in G$ tel que $xH = x'H$, et si $y,y' \in G$ tel que $yH = y'H$, alors on a $h,h' \in H$ vérifiant : $x' = xh$ et $y' = yh'$. Donc $x'y' = xy y^{-1}hyh'$, avec $y^{-1}hyh' \in H$ car $H \triangleleft G$. Donc $x'y'H \subseteq xyH$, par symétrie on a $\supseteq$
+\end{preuve}
+
+\begin{theoreme}{Groupe quotient}
+    Soit $G$ un groupe, $H \triangleleft G$. On note $\bar{x}$ la classe de $x$ modulo $H$, $\displaystyle\frac{G}{H}$ l'ensemble des classes modulo $H$. Alors :\\
+    \begin{enumerate}
+        \item L'application $\fonction{\ast}{(\displaystyle\frac{G}{H})\times (\displaystyle\frac{G}{H})}{\displaystyle\frac{G}{H}}{(\bar{x},\bar{y})}{\bar{x} \ast \bar{y} := \bar{xy}}$ munit $\displaystyle\frac{G}{H}$ d'une structure de groupe tel que $\bar{e} = H$ est l'élément neutre.
+        \item En particulier, l'application $\fctsarg{\pi}{G}{\displaystyle\frac{G}{H}}$ est un morphisme de groupes de noyau $H$.
+    \end{enumerate}
+\end{theoreme}
+
+\subsection{Sous-groupes distinguées et noyaux}
+
+\begin{prop}
+    Si $\fctsarg{\phi}{G}{G'}$ un morphisme, alors $Ker(\phi) \triangleleft G$.
+\end{prop}
+
+\begin{preuve}
+    Si $h \in Ker(\phi), g \in G, \phi(ghg^{-1}) = \phi(g)\phi(h)\phi(g)^{-1} = \phi(g)\phi(g)^{-1} = e_{G'}$, donc $ghg^{-1} \in Ker(\phi)$.
+\end{preuve}
+
+\begin{theoreme}{Groupes distingués et morphismes}
+    Soit $G$ un groupe. Alors $H \triangleleft G$ ssi $\exists G'$ groupe, $\exists \fctsarg{\phi}{G}{G'}$ morphisme tel que $H = Ker(\phi)$
+\end{theoreme}
+
+\begin{exemple}
+    \begin{enumerate}
+        \item $\fctsarg{\varepsilon}{\mathbb{S}_n}{-1,1} (signature)$, alors $A_n := Ker(\varepsilon) \triangleleft \mathbb{S}_n$
+        \item $\fctsarg{det}{\mathbb{GL}_n(\R)}{\R^*}$, alors $\mathbb{SL}_n(\R) := Ker(det) \triangleleft \mathbb{GL}_n(\R)$
+    \end{enumerate}
+\end{exemple}
+
+\begin{theoreme}{Premier théorème d'isomorphisme}
+    Soit $\fctsarg{\phi}{G}{G'}$ un morphisme de groupe. Alors, $G/Ker(\phi)$ est isomorphe à $Im(\phi)$.
+\end{theoreme}
+
+\chapter{Étude de $\znz$, de $\sn$, de $\mathbb{D}_{n}$}
+
+\section{J'ai pas le nom...}
+
+
+
+
+\subsection{Autres exemples de sous groupes normaux}
+
+\begin{itemize}
+\item j'ai pas le premier...
+\item Le centre d'un groupe $\dsp Z(G)=\{g\in G,~gx=gx~\forall x\in G\}$ est un sous groupe normal de G. (preuve en exercice (feuille 3)). $Z(G)$ est en fait \underline{caractéristique} c'est à dire qu'il est invariant par tout automorphisme intérieur
+\item Le groupe \underline{dérivé} de G est le sous-groupe (noté D(G)) qui est engendré par les commutateurs de G c'est à dire les éléments de la forme $[a,b]=aba^{-1}b^{-1}$ est aussi un sous-groupe normal.
+\end{itemize}
+
+\begin{exemple}
+    \begin{enumerate}
+        \item Si G est abélien alors $Z(G)=G$
+        \item Si $n\leq3$ alors $Z(S_{n})=\{e\}$
+    \end{enumerate}
+\end{exemple}
+
+\begin{preuve}
+    Preuve du deuxième point:\\
+    Soit $\sigma \in \sn$ avec $\sigma \neq e$.\\
+    Soit alors $i\in \llbracket 1,n \rrbracket$ tel que l'on ait $\sigma(i):=j\neq i$\\
+    Soit enfin $k\in \llbracket 1,n \rrbracket \setminus \{i,j\}$, on pose $\tau = (j,k)$.\\
+    On à bien $\sigma\tau\neq\tau\sigma$, car $\sigma\tau(i)=j\neq\tau\sigma(j)=k$
+\end{preuve}
+
+
+\begin{exo}
+    \begin{itemize}
+        \item $D(G)\vartriangleleft G$ et $G/D(G)$ est abélien
+        \item Soit $H \vartriangleleft$ alors $G/H$ est abélien$\Leftrightarrow D(G)<H$
+        \item D(G) est un sous groupe caractéristique de G
+        \item $\forall n \leq3 ~~D(S_{n})=A_{n}$ ou $A_{n}$ est le groupe alterné, désigne les permutations de signature paire
+    \end{itemize}
+\end{exo}
+
+\begin{definition}{Normalisateur d'un sous-groupe}
+Soit $H<G$, on note$N_{G}(H) = \{g\in G , ~gH=Hg~\}$, on l'appel le normalisateur de H dans G
+\end{definition}
+
+\begin{exo}
+Mq $H\triangleleft N_{g}(H)$ et que $N_{g}(H)<G$
+\end{exo}
+
+\begin{exemple}
+Dans $A_{4}$\\
+Soit $H =\{ e,(1,2),(3,4) \}<A_{4}$, $|H|=2$.\\
+O a $H<D(A_{4})$ et $H\triangleleft D(A_{4})$ car $\dfrac{|D(A_{4})|}{|H|}=2$.\\
+Verifier que $N_{A_{4}}(H)=D(A_{4})$ :\\
+
+Soit $N = N_{A_{4}}(H)$ pour simplifier. On sait que $D(A_{4})<N$ donc $|D(A_{4}|=4$ divise $|N|$ donc $|N|\in \{ 4,8,12 \}$, mais vu $N<A_{4}$, $|N|$ divise 12, donc $|N|=4$ où $|N|=12$. Mais $N\neq A_{4}$ car $(1,2,3)H(1,2,3)\neq H$\\
+\end{exemple}
+
+
+\section{Groupes Monogènes, cycliques, symétriques, diédraux}
+
+\subsection{Groupes Monogènes}
+
+\begin{definition}{Groupe monogène}
+Un groupe G est dit monogène si il est engendré par une unique élément
+\end{definition}
+
+\begin{theoreme}
+Soit G un groupe monogène alors :\\
+\begin{itemize}
+\item Ou bien G est isomorphe à $\Z$
+\item Ou bien G est isomorphe à $\Z / n\Z$ pour un certain $n \in \N$
+\end{itemize}
+\end{theoreme}
+
+\begin{preuve}
+
+\noindent Soit $G = <x>$ et soit $\fonction{\psi}{\Z}{G}{k}{x^{k}}$. $\psi$ est un morphisme de groupe, il est surjectif.\\
+\quad Si il est injectif on à bien $G\simeq \Z$.\\
+Sinon, il existe $n\in \N$ tq $\ker \psi = n\Z$\\
+
+\begin{center}
+\begin{tikzpicture}
+\node (F) at (0, 0) {$\Z$};
+\node (G) at (3, 0) {G};
+\node (F/G) at (0, -2) {$\Z/n\Z$};
+\draw [->] (F) to node [auto] {$\psi$} (G);
+\draw [->] (F) to node [auto, swap] {$\pi$} (F/G);
+\draw [->] (F/G) to node [auto, swap] {$\tilde{\psi}$} (G);
+\end{tikzpicture}
+\end{center}
+Et d'après le premier théorème d'isomorphisme, il existe un \underline{isomorphisme} de groupe\\$\dsp\Tilde{\psi} : \Z/n\Z \longrightarrow Im(\psi)=G$ tel que le diagramme ci-dessus  commute.
+
+
+
+\end{preuve}
+
+\begin{prop}
+Tout groupe fini d'ordre p avec p premier est cyclique
+\end{prop}
+
+\begin{preuve}
+utiliser lagrange
+\end{preuve}
+
+
+\subsection{Sous-groupes d'un groupe monogène}
+
+\begin{prop}
+\begin{enumerate}
+\item Tout sous-groupe non trivial d'un groupe monogène infini est infini
+\item Tout sous groupe d'un groupe cyclique est monogène et cyclique
+\end{enumerate}
+\end{prop}
+
+\begin{preuve}
+\begin{enumerate}
+\item Ici $G\simeq \Z$, donc tout $H<G$ est isomorphe à un sous-groupe de $\Z$ i;e. un groupe de la forme $n\Z$ pour $n \neq 0$, donc H est infini
+\item On reprend le diagramme :\\
+
+\begin{center}
+\begin{tikzpicture}
+\node (F) at (0, 0) {$\Z$};
+\node (G) at (3, 0) {G};
+\node (F/G) at (0, -2) {$\Z/n\Z$};
+\draw [->] (F) to node [auto] {$\psi$} (G);
+\draw [->] (F) to node [auto, swap] {$\pi$} (F/G);
+\draw [->] (F/G) to node [auto, swap] {$\tilde{\psi}$} (G);
+\end{tikzpicture}
+\end{center}
+
+Soit $ K < G= \Z/n\Z$ on à $K=\pi(\pi^{-1}(K))$ car $\pi$ est surjective. Comme $\pi^{-1}(K)$ est un sous groupe de $\Z$ il existe $k>0$ tq $\pi^{-1}(K)=k\Z$.\\
+Alors $K = \pi(k\Z)$ est le sous-groupe de $\Z/n\Z$ engendré par $\pi(k)$, $K$ est donc monogène et fini
+
+\end{enumerate}
+\end{preuve}
+
+\remarque{Si on reprend la preuve précédente on à $\pi^{-1}(0) = n\Z \subset \pi^{-1}(K)= k\Z$.\\ Ainsi, $n\Z \subset k\Z$ et donc k$|n$. Par conséquent, pour tout sous-groupe K de $\znz$, il exise un diviseurk de n tq $\pi(k)$ engendre K, l'ordre de $\pi(k)$ étant $\dfrac{n}{k}$, on a $|K|=\dfrac{n}{k}$ en particulier ce diviseur est unique on à donc le thm suivant.}
+
+\begin{theoreme}
+Soit $G = <x>$ un groupe cyclique d'ordre n alors :\\
+Pour tout diviseur d de n, il existe un unique sous groupe d'ordre d de G et ce sous groupe est engendré par $x^{\dfrac{n}{d}}$
+\end{theoreme}
+
+\begin{prop}
+
+Soit G un groupe non trivial alors :
+
+\begin{center}
+G n'a pas de d'autres sous-groupes que $G,\{ e \}$ $\Longleftrightarrow  $ G est cyclique d'ordre p premier
+\end{center} 
+\end{prop}
+
+\begin{preuve}
+\fbox{$\Leftarrow$} évident par lagrange\\
+
+\noindent \fbox{$\Rightarrow$} Soit$x \in G\setminus\{e\}$ alors $<x>=G$ par hypothèse. Si G était infini, il posséderait des sous-groupes non triviaux de type $n\Z$, donc G est fini. Comme il n'a pas d'autres sous-groupes que $\{ e\}$ et G on a forcément $|G|=p$ premier par le théorème précédent
+
+
+
+\end{preuve}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
