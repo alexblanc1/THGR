@@ -11,6 +11,7 @@
 \usepackage{tcolorbox} % pour le joli environnement
 \usepackage{tikz} % pour les diagrammes
 \usepackage{enumitem} % pour modifier facilement les items/ ennumérations
+\usepackage[T1]{fontenc}
 
 \newenvironment{definition}[1]{
     \begin{tcolorbox}[colframe= white]
@@ -604,11 +605,97 @@ G n'a pas de d'autres sous-groupes que $G,\{ e \}$ $\Longleftrightarrow  $ G est
 \begin{preuve}
 \fbox{$\Leftarrow$} évident par lagrange\\
 
-\noindent \fbox{$\Rightarrow$} Soit$x \in G\setminus\{e\}$ alors $<x>=G$ par hypothèse. Si G était infini, il posséderait des sous-groupes non triviaux de type $n\Z$, donc G est fini. Comme il n'a pas d'autres sous-groupes que $\{ e\}$ et G on a forcément $|G|=p$ premier par le théorème précédent
-
-
-
+\noindent \fbox{$\Rightarrow$} Soit$x \in G\setminus\{e\}$ alors $<x>=G$ par hypothèse. Si G était infini, il posséderait des sous-groupes non triviaux de type $n\Z$, donc G est fini. Comme il n'a pas d'autres sous-groupes que $\{ e\}$ et G on a forcément $|G|=p$ premier par le théorème précédent.
 \end{preuve}
+
+\begin{theoreme}
+	Soit $G$ un groupe monogène : $G=<x>$
+	\begin{enumerate}
+		Si $G$ est infini, alors les seuls générateurs de $G$ sont $x$ et $x^{-1}$ \\
+		Si $G$ est fini (il est cyclique d'ordre $n$) alors l'ensemble de ses générateurs est donné par $\{x^k : k\in \mathbb{Z}, k \wedge n =1\}$
+	\end{enumerate}
+\end{theoreme}
+
+\begin{preuve}
+	\begin{enumerate}
+	\item	Soit $\psi : k \in \mathbb{Z} \to x^k \in G \,$ (vue précédemment) qui est un isomorphisme de groupes. En particulier, $\psi$ échange les générateurs. Comme les seuls générateurs de $\mathbb{Z}$ sont $1$ et $-1$, on conclut. \\
+	\item	Soit $k \in \mathbb{Z}$, alors : $$G=<x> \iff \exists m \in \mathbb{Z}, x^{km}=x$$
+		$$\iff \exists m \in \mathbb{Z}, n | km-1 \iff \exists (m,q)\in \mathbb{Z}, km-nq=1$$
+		$$\iff pgcd(k,n)=1$$
+	
+	\end{enuemrate}
+\end{preuve}
+
+\begin{exo}
+	L'ensemble des générateurs de $G \simeq \mathbb{Z}/n\mathbb{Z}$ est aussi égal à $\{\bar{k} \in \mathbb{Z}/n\mathbb{Z} : 0 \leq k \leq n-1, k \wedge n =1\}$
+\end{exo}
+
+\begin{definition}{Fonction d'Euler}
+	La fonction d'Euler est la fonction $\varphi : \mathbb{N}^* \rightarrow \mathbb{N}^*$ telle que :\begin{enumerate}
+\item \varphi (1) = 1 \\ 
+	\item \varphi (n) = | \{k \in \mathbb{N} : 1 \leq k \leq n, k \wedge n =1 \}|
+		
+\end{enumerate}
+\end{definition}
+
+
+
+
+\section{Anneau $\mathbb{Z}/n\mathbb{Z}$}
+
+On rappelle que les opérations d'addition et de multiplication sont bien définies sur $\mathbb{Z}/n\mathbb{Z}$ (pas de dépendance des représentants) et que cet anneau est unitaire. 
+
+\begin{definition}{Inverse modulo $n$}
+On dit que $\bar{k}\in \mathbb{Z}/n\mathbb{Z}$ est inversible s'il existe $\bar{m} \in \mathbb{Z}/n\mathbb{Z}$ tel que $\bar{k}\bar{m}=\bar{1}$
+\end{definition}
+
+\begin{prop}
+	Soit $n \geq 2$. Les éléments inversibles de $\mathbb{Z}/n\mathbb{Z}$ sont exactements les générateurs de $\left (\mathbb{Z}/n\mathbb{Z}, + \right)$ \\
+	L'ensemble des éléments inversibles est alors un groupe abélien fini d'ordre $\varphi (n)$.
+\end{prop}
+\begin{preuve}
+	Utiliser la caractérisation précédente avec Bézout.
+\end{preuve}
+
+\section{Produits directs de groupes cycliques, calcul de $\varphi (n)$}
+On considère le morphisme d'anneaux unitaires : $$f : k\in \mathbb{Z} \to (\bar{k}, \bar{\bar{k}}) \in \mathbb{Z}/n\mathbb{Z} \times \mathbb{Z}/m\mathbb{Z}$$
+
+\begin{theoreme}
+	Le morphisme d'anneaux unitaires $f$ induit par passage au quotient par son noyau un isomorphisme d'anneaux unitaires 
+	$\bar{f} : \mathbb{Z}/nm\mathbb{Z} \rightarrow \mathbb{Z}/n\mathbb{Z} \times \mathbb{Z}/m\mathbb{Z}\; \; \text{si et seulement si}\; m\wedge n =1$
+\end{theoreme}
+
+\begin{preuve}
+	Il faut vérifier $\bar{f}$ est bijective ssi $m \wedge n=1$ :
+	\begin{enumerate}
+	$f$ \text{surjective} \\ \iff | Im(f) | =mn \\ \iff |\mathbb{Z}/ker(f)| = mn \; \textit{(grâce au théorème d'isomorphisme)} \\ \iff ker(f)= mn\mathbb{Z} \\ \iff m\mathbb{Z} \cap n\mathbb{Z} = mn\mathbb{Z}\\  \iff m \wedge n =1 
+	
+\end{enumerate}
+\end{preuve}
+
+\begin{prop}
+	Si $m \wedge n =1$, alors $\varphi (nm) = \varphi (n) \varphi (m)$
+\end{prop}
+
+\begin{theoreme}
+	Soit $n=p_1^{\alpha_1} \cdots p_k^{\alpha_k}$, décomposé en facteur premiers. Alors : $$\varphi (n) = n \left (1-\frac{1}{p_1} \right ) \cddts  \left (1-\frac{1}{p_k} \right ) $$
+\end{theoreme}
+
+\begin{preuve}
+	Il nous suffit de calculer $\varphi (p^\alpha)$ pour $p$ premier et $\alpha \geq 1^$. On a :\\ $\varphi (p^\alpha) = | \{ k \in \{1, \cdots , p^\alpha \} : k \wedge p^\alpha =1 \} = | \{ 1, \cdots , p^\alpha \} \textbackslash \{ p, 2p, \cdots , p^{\alpha -1}p \} |=p^{\alpha}-p^{\alpha -1}=p^\alpha \left( 1 - \frac{1}{p} \right)$ 
+\end{preuve}
+
+\section{Structure des groupes abéliens finis (admis)}
+Référence : Livre de F. Ulmer "Théorie des groupes" chap 12
+\newline
+
+Soit $G$ un groupe fini abélien d'ordre $N$. Il existe une décomposition unique $N=d_1 \cdots d_n$ avec $d_n \geq 2$ et $d_{i+1} | d_i$ telle que : $$G \simeq \mathbb{Z}/d_1\mathbb{Z} \times \dots \times \mathbb{Z}/d_n\mathbb{Z}$$
+
+\begin{exemple}
+	On peut lister, à isomorphisme près, tous les groupes abiéliens d'ordre $72=3^2 \times 2^3$. 
+\end{exemple}
+
+
 
 
 
