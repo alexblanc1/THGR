@@ -1,6 +1,7 @@
 \documentclass{report}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
+\usepackage{parskip}
 \usepackage[a4paper,width=160mm,top=25mm,bottom=25mm]{geometry}
 \usepackage{graphicx}
 \usepackage{amsfonts} %police
@@ -15,46 +16,56 @@
 
 \newenvironment{definition}[1]{
     \begin{tcolorbox}[colframe= white]
-    \textbf{Définition :} (#1)\\
+    \textbf{Définition :} #1
+    \par
     }
     {\end{tcolorbox}}
 
-\newenvironment{preuve}{
-    \begin{changebar}
-    \noindent\textbf{Preuve :}\\}{
-    \begin{flushright}
-    $\square$
-    \end{flushright}
-    \end{changebar}
-}
+%\newenvironment{preuve}{
+%    \begin{changebar}
+%    \noindent\textbf{Preuve :}\\
+%    \begin{flushright}
+%    $\square$
+%    \end{flushright}
+%    \end{changebar}
+%}
+
+\newenvironment{preuve}{\begin{tcolorbox}[colframe= white]
+    \textbf{Preuve :}
+\par }
+    {\end{tcolorbox}}
+
 
 \newenvironment{prop}{\begin{tcolorbox}[colframe= white]
-    \textbf{Propriété :}\\}
+    \textbf{Propriété :}
+     \par}
     {\end{tcolorbox}}
 
 \newenvironment{exemple}{\begin{tcolorbox}[colframe= white]
-    \textbf{Exemple :}\\}
+    \textbf{Exemple :}
+     \par}
     {\end{tcolorbox}}
 
 \newenvironment{exo}{\begin{tcolorbox}[colframe= white]
-    \textbf{Exercice :}\\}
+    \textbf{Exercice :}
+    \par}
     {\end{tcolorbox}}
 
 \newenvironment{corollaire}{\begin{tcolorbox}[colframe= white]
-    \textbf{Corollaire :}\\}
+    \textbf{Corollaire :} \par}
     {\end{tcolorbox}}
 
 \newenvironment{lemme}[2][white]{\begin{tcolorbox}[colframe= #1]
-    \textbf{Lemme :} #2\\}
+    \textbf{Lemme :} #2  \par}
     {\end{tcolorbox}}
 
 \newenvironment{theoreme}[1][]{
     \begin{tcolorbox}[]
-    \textbf{Théorème :} #1 \\} 
+    \textbf{Théorème :} #1  \par} 
     {\end{tcolorbox}}
 
 \newcommand{\remarque}{
-    \noindent\textbf{Remarque :}\\
+    \noindent\textbf{Remarque :} \par
 }
 
 \newcommand{\mat}[2]{
@@ -100,11 +111,12 @@
 \setlist[enumeratel]{itemjoin=\\, label=\arabic*.}
 
 
-\title{Theorie des groupes}
+\title{Théorie des groupes}
 \author{Bcp de monde... }
 \date{September 2024}
 
 \begin{document}
+
 \maketitle
 \tableofcontents
 
@@ -117,13 +129,12 @@
     mdr a definition d'une distance
 \end{definition}
 \subsection{Sous-section1}
-\begin{theoreme}
-    $$\dim\ker\varphi + \dim \im f = \dim E$$
-\end{theoreme}
+
 
 \begin{preuve}
     exemple de preuve
 \end{preuve}
+
 \subsection{Comment faire un lemme}
 \begin{lemme}[black]{}
 avec la box noire sans nom
@@ -133,10 +144,7 @@ avec la box noire sans nom
     sasn la box mais avec le nom
 \end{lemme}
 
-\paragraph{test}
-\begin{lemme}{}
-    sans rien
-\end{lemme}
+
 
 \chapter{Notion de groupe, morphisme, produit direct}
 
@@ -177,7 +185,10 @@ G est dit fini si il est cardinal fini, on note alors $o(G) = |G|$, appelé ordr
 
 \begin{definition}{Sous-groupe engendré par une partie}
 Soient G un groupe et $S\subset G$\\
-Soit $G_{S}$ l'ensemble des sous groupes de G qui contiennent S. \\\\On appelle sous groupe engendré par S l'ensemble : $ \dsp\langle S\rangle := \bigcap _{H\in G_{S}}H$\\\\
+Soit $G_{S}$ l'ensemble des sous groupes de G qui contiennent S. \\
+{\color{white}-}\\
+On appelle sous groupe engendré par S l'ensemble : $ \dsp\langle S\rangle := \bigcap _{H\in G_{S}}H$\\
+{\color{white}-}\\
 Si de plus $\langle S\rangle = G$ on dit que S est une partie génératrice de G ou que S engendre G
 \end{definition}
 
@@ -196,8 +207,9 @@ Si $x^{n}=e$ alors $o(x)|n$
 
 \section{morphismes de groupes}
 \begin{definition}{Morphisme de groupe}
-\\Soit $(G,\ast), (H,\cdot)$ deux groupes. Un morphisme de groupes de G dans H est une application\\
-\\$\fctsarg{f}{G}{H}$ tel que $\forall x,y \in G, f(x \ast y) = f(x) \cdot f(y)$
+Soit $(G,\ast), (H,\cdot)$ deux groupes. Un morphisme de groupes de G dans H est une application\\
+{\color{white}-}\\
+$\fctsarg{f}{G}{H}$ tel que $\forall x,y \in G, f(x \ast y) = f(x) \cdot f(y)$
 \end{definition}
 
 \begin{exo}
@@ -256,13 +268,13 @@ Si $x^{n}=e$ alors $o(x)|n$
     On note $Int(G)$ l'ensemble des automorphismes intérieurs de $G$, montrer que $Int(G) < Aut(G)$
 \end{exo}
 
-\begin{theoreme}{ (Théorème de Cayley)}\\
+\begin{theoreme}[Théorème de Cayley]
     Tout groupe G est isomorphe à un sous-groupe de $\mathbb{S}_G$. En particulier, si $|G| = n$, alors $G$ est isomorphe à un sous-groupe de $\sn$.
 \end{theoreme}
 
 \begin{preuve}
-    Pour tout $g\in G$, on pose $\fonction{\tau_g}{G}{G}{x}{gx}$ $\tau_g$ est une bijection de $G$ dans $G$. Notons $T_G := \{\tau_g,g\in G\} \subseteq \mathbb{S}_G$.\\
-    \noindent Vérifions que:\\
+    Pour tout $g\in G$, on pose $\fonction{\tau_g}{G}{G}{x}{gx}$ $\tau_g$ est une bijection de $G$ dans $G$. Notons $T_G := \{\tau_g,g\in G\} \subseteq \mathbb{S}_G$. \par
+    \noindent Vérifions que:  \par
     
     \begin{enumerate}
     \item $T_G < \mathbb{S}_G$
@@ -318,7 +330,7 @@ Soit $g\in G$ tel que $\tau_g = Id_G$. Alors $\forall x \in G, gx =  x$. Si on p
 \end{theoreme}
 
 \begin{preuve}
-    \fbox{$\Rightarrow$} Supposons qu'il existe $\fctsarg{\phi}{G_1 \times G_2}{G}$ isomorphe.\\
+    \fbox{$\Rightarrow$} Supposons qu'il existe $\fctsarg{\phi}{G_1 \times G_2}{G}$ isomorphe.\par
     
     \begin{enumerate}
     \item On a que $ G_{1}\simeq \{G_{1},e_{2}\} \simeq \phi\left(\{G_{1},e_{2}\}\right):=H_{1} $ il suffit alors de remarquer que $H_{1}$ est un sous groupe de G. On construit de même $H_{2}$
@@ -327,7 +339,7 @@ Soit $g\in G$ tel que $\tau_g = Id_G$. Alors $\forall x \in G, gx =  x$. Si on p
     $\dsp h_1 h_2 = \phi(h_1 'h_2 ') = \phi(h_2 'h_1 ') = h_2 h_1 $
     \end{center}
     
-    \item $\forall x \in G, \exists!~x'=(h_{1},h_{2})\in G_{1}\times G_{2}$ tel que $\phi(x')=x$. On a alors :\\
+    \item $\forall x \in G, \exists!~x'=(h_{1},h_{2})\in G_{1}\times G_{2}$ tel que $\phi(x')=x$. On a alors :  \par
     \begin{center}
     $\dsp x = \phi(x') = \phi(h_{1}'h_{2}') = h_{1}h_{2} $
     \end{center}
@@ -389,7 +401,7 @@ L'application $\fctsarg{}{x_i H}{H (x_i)^{-1}}$ est une bijection de l'ensemble 
 \end{definition}
 
 On en déduit le théorème de Lagrange :
-\begin{theoreme}{Théorème de Lagrange}
+\begin{theoreme}[Théorème de Lagrange]
     Soit $G$ un groupe fini et $H < G$. Alors :
     \begin{enumerate}
         \item $|G| = |H|[G:H]$
@@ -399,9 +411,9 @@ On en déduit le théorème de Lagrange :
 
 \section{Sous-groupes distingués}
 
-\begin{definition}
+\begin{definition} 
     Soit $G$ un groupe fini, $H < G$ est dit distingué (ou normal) dans $G$ ssi $\forall x \in G, xH = Hx$.\\
-    Le cas échéant on note : $H \triangleleft $
+    Le cas échéant on note : $H \triangleleft G$
 \end{definition}
 
 \begin{definition}
@@ -427,7 +439,7 @@ $\Leftarrow)$ Si $x,x' \in G$ tel que $xH = x'H$, et si $y,y' \in G$ tel que $yH
 \end{preuve}
 
 \begin{theoreme}{Groupe quotient}
-    Soit $G$ un groupe, $H \triangleleft G$. On note $\bar{x}$ la classe de $x$ modulo $H$, $\displaystyle\frac{G}{H}$ l'ensemble des classes modulo $H$. Alors :\\
+    Soit $G$ un groupe, $H \triangleleft G$. On note $\bar{x}$ la classe de $x$ modulo $H$, $\displaystyle\frac{G}{H}$ l'ensemble des classes modulo $H$. Alors : \par
     \begin{enumerate}
         \item L'application $\fonction{\ast}{(\displaystyle\frac{G}{H})\times (\displaystyle\frac{G}{H})}{\displaystyle\frac{G}{H}}{(\bar{x},\bar{y})}{\bar{x} \ast \bar{y} := \bar{xy}}$ munit $\displaystyle\frac{G}{H}$ d'une structure de groupe tel que $\bar{e} = H$ est l'élément neutre.
         \item En particulier, l'application $\fctsarg{\pi}{G}{\displaystyle\frac{G}{H}}$ est un morphisme de groupes de noyau $H$.
@@ -444,7 +456,7 @@ $\Leftarrow)$ Si $x,x' \in G$ tel que $xH = x'H$, et si $y,y' \in G$ tel que $yH
     Si $h \in Ker(\phi), g \in G, \phi(ghg^{-1}) = \phi(g)\phi(h)\phi(g)^{-1} = \phi(g)\phi(g)^{-1} = e_{G'}$, donc $ghg^{-1} \in Ker(\phi)$.
 \end{preuve}
 
-\begin{theoreme}{Groupes distingués et morphismes}
+\begin{theoreme}[Groupes distingués et morphismes]
     Soit $G$ un groupe. Alors $H \triangleleft G$ ssi $\exists G'$ groupe, $\exists \fctsarg{\phi}{G}{G'}$ morphisme tel que $H = Ker(\phi)$
 \end{theoreme}
 
@@ -508,12 +520,12 @@ Mq $H\triangleleft N_{g}(H)$ et que $N_{g}(H)<G$
 \end{exo}
 
 \begin{exemple}
-Dans $A_{4}$\\
-Soit $H =\{ e,(1,2),(3,4) \}<A_{4}$, $|H|=2$.\\
-O a $H<D(A_{4})$ et $H\triangleleft D(A_{4})$ car $\dfrac{|D(A_{4})|}{|H|}=2$.\\
-Verifier que $N_{A_{4}}(H)=D(A_{4})$ :\\
+Dans $A_{4}$ \par
+Soit $H =\{ e,(1,2),(3,4) \}<A_{4}$, $|H|=2$.  \par
+O a $H<D(A_{4})$ et $H\triangleleft D(A_{4})$ car $\dfrac{|D(A_{4})|}{|H|}=2$.  \par
+Verifier que $N_{A_{4}}(H)=D(A_{4})$ :  \par
 
-Soit $N = N_{A_{4}}(H)$ pour simplifier. On sait que $D(A_{4})<N$ donc $|D(A_{4}|=4$ divise $|N|$ donc $|N|\in \{ 4,8,12 \}$, mais vu $N<A_{4}$, $|N|$ divise 12, donc $|N|=4$ où $|N|=12$. Mais $N\neq A_{4}$ car $(1,2,3)H(1,2,3)\neq H$\\
+Soit $N = N_{A_{4}}(H)$ pour simplifier. On sait que $D(A_{4})<N$ donc $|D(A_{4}|=4$ divise $|N|$ donc $|N|\in \{ 4,8,12 \}$, mais vu $N<A_{4}$, $|N|$ divise 12, donc $|N|=4$ où $|N|=12$. Mais $N\neq A_{4}$ car $(1,2,3)H(1,2,3)\neq H$  \par
 \end{exemple}
 
 
@@ -526,7 +538,7 @@ Un groupe G est dit monogène si il est engendré par une unique élément
 \end{definition}
 
 \begin{theoreme}
-Soit G un groupe monogène alors :\\
+Soit G un groupe monogène alors : \par
 \begin{itemize}
 \item Ou bien G est isomorphe à $\Z$
 \item Ou bien G est isomorphe à $\Z / n\Z$ pour un certain $n \in \N$
@@ -535,9 +547,9 @@ Soit G un groupe monogène alors :\\
 
 \begin{preuve}
 
-\noindent Soit $G = <x>$ et soit $\fonction{\psi}{\Z}{G}{k}{x^{k}}$. $\psi$ est un morphisme de groupe, il est surjectif.\\
-\quad Si il est injectif on à bien $G\simeq \Z$.\\
-Sinon, il existe $n\in \N$ tq $\ker \psi = n\Z$\\
+\noindent Soit $G = \langle x \rangle$ et soit $\fonction{\psi}{\Z}{G}{k}{x^{k}}$. $\psi$ est un morphisme de groupe, il est surjectif. \par
+\quad Si il est injectif on à bien $G\simeq \Z$. \par
+Sinon, il existe $n\in \N$ tq $\ker \psi = n\Z$  \par
 
 \begin{center}
 \begin{tikzpicture}
@@ -575,8 +587,8 @@ utiliser lagrange
 
 \begin{preuve}
 \begin{enumerate}
-\item Ici $G\simeq \Z$, donc tout $H<G$ est isomorphe à un sous-groupe de $\Z$ i;e. un groupe de la forme $n\Z$ pour $n \neq 0$, donc H est infini
-\item On reprend le diagramme :\\
+\item Ici $G\simeq \Z$, donc tout $H<G$ est isomorphe à un sous-groupe de $\Z$ ie. un groupe de la forme $n\Z$ pour $n \neq 0$, donc H est infini
+\item On reprend le diagramme :
 
 \begin{center}
 \begin{tikzpicture}
@@ -595,11 +607,11 @@ Alors $K = \pi(k\Z)$ est le sous-groupe de $\Z/n\Z$ engendré par $\pi(k)$, $K$ 
 \end{enumerate}
 \end{preuve}
 
-\remarque{Si on reprend la preuve précédente on à $\pi^{-1}(0) = n\Z \subset \pi^{-1}(K)= k\Z$.\\ Ainsi, $n\Z \subset k\Z$ et donc k$|n$. Par conséquent, pour tout sous-groupe K de $\znz$, il exise un diviseurk de n tq $\pi(k)$ engendre K, l'ordre de $\pi(k)$ étant $\dfrac{n}{k}$, on a $|K|=\dfrac{n}{k}$ en particulier ce diviseur est unique on à donc le thm suivant.}
+\remarque{Si on reprend la preuve précédente on à $\pi^{-1}(0) = n\Z \subset \pi^{-1}(K)= k\Z$.\\ Ainsi, $n\Z \subset k\Z$ et donc $k|n$. Par conséquent, pour tout sous-groupe K de $\znz$, il existe un diviseur $k$ de $n$ tel que $\pi(k)$ engendre K, l'ordre de $\pi(k)$ étant $\dfrac{n}{k}$, on a $|K|=\dfrac{n}{k}$ en particulier ce diviseur est unique on à donc le théorème suivant.}
 
 \begin{theoreme}
-Soit $G = <x>$ un groupe cyclique d'ordre n alors :\\
-Pour tout diviseur d de n, il existe un unique sous groupe d'ordre d de G et ce sous groupe est engendré par $x^{\dfrac{n}{d}}$
+Soit $G = \langle x \rangle$ un groupe cyclique d'ordre n alors :\\
+Pour tout diviseur $d$ de $n$, il existe un unique sous groupe d'ordre d de G et ce sous groupe est engendré par $x^{\dfrac{n}{d}}$
 \end{theoreme}
 
 \begin{prop}
@@ -607,32 +619,41 @@ Pour tout diviseur d de n, il existe un unique sous groupe d'ordre d de G et ce 
 Soit G un groupe non trivial alors :
 
 \begin{center}
-G n'a pas de d'autres sous-groupes que $G,\{ e \}$ $\Longleftrightarrow  $ G est cyclique d'ordre p premier
+$G$ n'a pas de d'autres sous-groupes que $G,\{ e \}$ $\Longleftrightarrow  $ G est cyclique d'ordre $p$ premier
 \end{center} 
 \end{prop}
 
 \begin{preuve}
-\fbox{$\Leftarrow$} évident par lagrange\\
+\fbox{$\Leftarrow$} évident par Lagrange
 
-\noindent \fbox{$\Rightarrow$} Soit$x \in G\setminus\{e\}$ alors $<x>=G$ par hypothèse. Si G était infini, il posséderait des sous-groupes non triviaux de type $n\Z$, donc G est fini. Comme il n'a pas d'autres sous-groupes que $\{ e\}$ et G on a forcément $|G|=p$ premier par le théorème précédent.
+
+\noindent \fbox{$\Rightarrow$} Soit$x \in G\setminus\{e\}$ alors $\langle x>=G$ par hypothèse. Si G était infini, il posséderait des sous-groupes non triviaux de type $n\Z$, donc G est fini. Comme il n'a pas d'autres sous-groupes que $\{ e\}$ et G on a forcément $|G|=p$ premier par le théorème précédent.
 \end{preuve}
 
 \begin{theoreme}
-	Soit $G$ un groupe monogène : $G=<x>$
+	Soit $G$ un groupe monogène : $G=\langle x \rangle$
 	\begin{enumerate}
-		\item Si $G$ est infini, alors les seuls générateurs de $G$ sont $x$ et $x^{-1}$ \\
+		\item Si $G$ est infini, alors les seuls générateurs de $G$ sont $x$ et $x^{-1}$ 
 		\item Si $G$ est fini (il est cyclique d'ordre $n$) alors l'ensemble de ses générateurs est donné par $\{x^k : k\in \mathbb{Z}, k \wedge n =1\}$
 	\end{enumerate}
 \end{theoreme}
 
 \begin{preuve}
 	\begin{enumerate}
-	\item	Soit $\psi : k \in \mathbb{Z} \to x^k \in G \,$ (vue précédemment) qui est un isomorphisme de groupes. En particulier, $\psi$ échange les générateurs. Comme les seuls générateurs de $\mathbb{Z}$ sont $1$ et $-1$, on conclut. \\
-	\item	Soit $k \in \mathbb{Z}$, alors : $$G=<x> \iff \exists m \in \mathbb{Z}, x^{km}=x$$
-		$$\iff \exists m \in \mathbb{Z}, n | km-1 \iff \exists (m,q)\in \mathbb{Z}, km-nq=1$$
-		$$\iff pgcd(k,n)=1$$
+	\item	Soit $\psi : k \in \mathbb{Z} \to x^k \in G \,$ (vue précédemment) qui est un isomorphisme de groupes. En particulier, $\psi$ échange les générateurs. Comme les seuls générateurs de $\mathbb{Z}$ sont $1$ et $-1$, on conclut. 
+	\item	Soit $k \in \mathbb{Z}$, alors : 
+		\begin{equation*} 
+		\begin{split}
+			G=\langle x \rangle  &  \iff \exists m \in \mathbb{Z}, x^{km}=x \\
+ 			& \iff \exists m \in \mathbb{Z}, n | km-1 \\
+			&  \iff \exists (m,q)\in \mathbb{Z}, km-nq=1 \\
+			& \iff pgcd(k,n)=1
+		\end{split}
+\end{equation*}
 	
 	\end{enumerate}
+	
+
 \end{preuve}
 
 \begin{exo}
@@ -676,8 +697,16 @@ On considère le morphisme d'anneaux unitaires : $$f : k\in \mathbb{Z} \to (\bar
 \end{theoreme}
 
 \begin{preuve}
-	Il faut vérifier $\bar{f}$ est bijective ssi $m \wedge n=1$ :\\ \\
-	$f \text{ est surjective} \\ \iff | Im(f) | =mn \\ \iff |\mathbb{Z}/ker(f)| = mn \; \textit{(grâce au théorème d'isomorphisme)} \\ \iff ker(f)= mn\mathbb{Z} \\ \iff m\mathbb{Z} \cap n\mathbb{Z} = mn\mathbb{Z}\\  \iff m \wedge n =1$
+	Il faut vérifier $\bar{f}$ est bijective ssi $m \wedge n=1$ : \par
+	\begin{equation*} 
+	\begin{split}
+		f \text{ est surjective}  & \iff | Im(f) | =mn \\
+ 		& \iff |\mathbb{Z}/ker(f)| = mn \; \textit{(grâce au théorème d'isomorphisme)} \\ 
+		& \iff ker(f)= mn\mathbb{Z} \\ 
+		& \iff m\mathbb{Z} \cap n\mathbb{Z} = mn\mathbb{Z} \\
+		& \iff m \wedge n =1
+	\end{split}
+\end{equation*}
 \end{preuve}
 
 \begin{prop}
@@ -685,16 +714,23 @@ On considère le morphisme d'anneaux unitaires : $$f : k\in \mathbb{Z} \to (\bar
 \end{prop}
 
 \begin{theoreme}
-	Soit $n=p_1^{\alpha_1} \cdots p_k^{\alpha_k}$, décomposé en facteur premiers. Alors : $$\varphi (n) = n \left (1-\frac{1}{p_1} \right ) \cdots  \left (1-\frac{1}{p_k} \right ) $$
+	Soit $n=p_1^{\alpha_1} \cdots p_k^{\alpha_k}$, décomposé en facteur premiers. Alors : $$\varphi (n) = n \left (1-\frac{1}{p_1} \right )\times \cdots  \times \left (1-\frac{1}{p_k} \right ) $$
 \end{theoreme}
 
 \begin{preuve}
-	Il nous suffit de calculer $\varphi (p^\alpha)$ pour $p$ premier et $\alpha \geq 1$. On a :\\ $\varphi (p^\alpha) = | \{ k \in \{1, \cdots , p^\alpha \} : k \wedge p^\alpha =1 \}| = | \{ 1, \cdots , p^\alpha \} \textbackslash \{ p, 2p, \cdots , p^{\alpha -1}p \} |=p^{\alpha}-p^{\alpha -1}=p^\alpha \left( 1 - \frac{1}{p} \right)$ 
+Il nous suffit de calculer $\varphi (p^\alpha)$ pour $p$ premier et $\alpha \geq 1$. On a : 
+\begin{equation*} \label{eq1}
+	\begin{split}
+	\varphi (p^\alpha) & = | \{ k \in \{1, \cdots , p^\alpha \} : k \wedge p^\alpha =1 \}|  \\
+	& = | \{ 1, \cdots , p^\alpha \} \backslash \{ p, 2p, \cdots , p^{\alpha -1}p \} | \\
+	& =p^{\alpha}-p^{\alpha -1}
+	\end{split}
+\end{equation*}
 \end{preuve}
 
 \section{Structure des groupes abéliens finis (admis)}
 Référence : Livre de F. Ulmer "Théorie des groupes" chap 12
-\newline
+
 
 Soit $G$ un groupe fini abélien d'ordre $N$. Il existe une décomposition unique $N=d_1 \cdots d_n$ avec $d_n \geq 2$ et $d_{i+1} | d_i$ telle que : $$G \simeq \mathbb{Z}/d_1\mathbb{Z} \times \dots \times \mathbb{Z}/d_n\mathbb{Z}$$
 
@@ -852,12 +888,10 @@ Soit $\sigma=(i,j,k)$ un 3-cycle. $\sigma^2$ est aussi un 3-cycle donc d'après 
 
 \begin{preuve}
 \begin{enumerate}
-\item $\mathcal{A}_3 = <(1,2,3)>$ donc $\mathcal{A}_3\simeq \Z/3\Z$ est abélien
+\item $\mathcal{A}_3 = \langle (1,2,3) \rangle$ donc $\mathcal{A}_3\simeq \Z/3\Z$ est abélien
 \item On note $V = \{e,(1,2)(3,4),(1,3)(2,4),(1,4)(2,3)\}$, c'est un sous groupe distingué de $\mathcal{A}_4$. Alors le groupe quotient $\mathcal{A}_4/V$ est d'ordre 3 donc isomorphe à $\Z/3\Z$ qui est abélien. Ainsi $D(\mathcal{A}_4)$ est un sous-groupe de $V$. Par le théorème de Lagrange, $D(\mathcal{A}_4)$ est de cardinal $1$, $2$, ou $4$. $\mathcal{A}_4$ n'est pas abélien donc ce n'est pas $1$. Si c'était $2$, $D(\mathcal{A}_4)$ serait de la forme $\{e, (i,j)(k,l)\}$ qui n'est pas distingué.
 \end{enumerate}
 \end{preuve}
-
-
 
 
 \end{document}
