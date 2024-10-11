@@ -13,11 +13,12 @@
 \usepackage{tikz} % pour les diagrammes
 \usepackage{enumitem} % pour modifier facilement les items/ ennumérations
 \usepackage[T1]{fontenc}
+\usepackage[pdftex]{hyperref} 
 
-\newenvironment{definition}[1]{
+\newenvironment{definition}[1][]{
     \begin{tcolorbox}[colframe= white]
-    \textbf{Définition :} #1
-    \par
+    \textbf{Définition :} 
+    #1 \par
     }
     {\end{tcolorbox}}
 
@@ -87,7 +88,7 @@
 
 \newcommand{\fctsarg}[3]{
     \begin{array}{lrcl}
-    #1:  & #2 & \longrightarrow & #3 \\
+    #1: & #2 & \longrightarrow & #3 \\
     \end{array}
 }
 
@@ -105,7 +106,8 @@
 
 % l'indentation des items, ainsi que l'espace entre les items est mal définie pour les deux environnements suivants :
 \newlist{itemizel}{itemize*}{1} % comme itemize mais sans saut de ligne avant le premier item, ni après le dernier, de profondeur max 1 (pas de itemizel dans un itemizel), et de label par défaut bullet
-\setlist[itemizel]{itemjoin=\\, label=$\bullet$}
+\setlist[itemizel]{itemjoin=\\, label=$\bullet$}% !TEX useOldSyncParser
+
 
 \newlist{enumeratel}{enumerate*}{1} % comme enumerate mais sans saut de ligne avant le premier item, ni après le dernier, de profondeur max 1 (pas de itemizel dans un itemizel)
 \setlist[enumeratel]{itemjoin=\\, label=\arabic*.}
@@ -118,6 +120,7 @@
 \begin{document}
 
 \maketitle
+
 \tableofcontents
 
 \chapter*{Exemples en tout genres}
@@ -163,7 +166,7 @@ Un groupe est un ensemble non vide G munis d'une loi $\ast$ telle que :
 \end{definition}
 
 \begin{definition}{Groupe abélien}
-Un groupe G est dit \underline{abélien} si $\forall (x,y)\in G,~xy=yx$
+Un groupe G est dit \underline{abélien} si : $\forall (x,y)\in G,~xy=yx$
 \end{definition}
 
 \subsection{Sous-groupes}
@@ -207,7 +210,7 @@ Si $x^{n}=e$ alors $o(x)|n$
 
 \section{morphismes de groupes}
 \begin{definition}{Morphisme de groupe}
-Soit $(G,\ast), (H,\cdot)$ deux groupes. Un morphisme de groupes de G dans H est une application\\
+Soit $(G,\ast), (H,\cdot)$ deux groupes. Un morphisme de groupes de G dans H est une application
 {\color{white}-}\\
 $\fctsarg{f}{G}{H}$ tel que $\forall x,y \in G, f(x \ast y) = f(x) \cdot f(y)$
 \end{definition}
@@ -303,7 +306,7 @@ Soit $g\in G$ tel que $\tau_g = Id_G$. Alors $\forall x \in G, gx =  x$. Si on p
 \end{definition}
 
 \begin{exo}
-    vérifier que $G_1 \times G_2$ muni de cette loi ests bien un groupe.
+    vérifier que $G_1 \times G_2$ muni de cette loi est bien un groupe.
 \end{exo}
 \begin{definition}{Projections et injections canoniques}
 \begin{enumerate}
@@ -314,7 +317,8 @@ Soit $g\in G$ tel que $\tau_g = Id_G$. Alors $\forall x \in G, gx =  x$. Si on p
 
 \remarque
     $\im (q_i)$ est isomorphe à $G_i$. Ainsi $G1 \times G_2$ contient un sous-groupe isomorphe à $G_1$, de même pour $G_2$.
-\\
+
+
 \remarque
     $\forall ~x = (x_1 ,x_2) \in G_1 \times G_2,$ on a :\\
     $x = (p_1 (x), p_2 (x)) = (x_1 ,x_2) = (x_1 ,e_2)(e_1 ,x_2) = (e_1 ,x_2)(x_1 ,e_2) = q_1 (x_1)q_2 (x_2) = q_2(x_2)q_2(x_1)$
@@ -377,7 +381,7 @@ Soit $H < G$. On définit $x\mathcal{R}_H y \iff xy^{-1} \in H$ et $x _{H}\mathc
 
 \begin{exemple}
     Dans $\mathbb{S}_3, \sigma := (1,2,3),\tau := (1,2)$\\
-    $\mathbb{S}_3 \{e,\sigma,\sigma^2,\tau,\tau\sigma,\sigma\tau\}$, pour $H = \{e,\tau \}$\\
+    $\mathbb{S}_3 = \{e,\sigma,\sigma^2,\tau,\tau\sigma,\sigma\tau\}$, pour $H = \{e,\tau \}$\\
     $H_{\sigma} = \{\sigma, \tau\sigma\}, H_{\sigma^2} = \{\sigma^2,\tau\sigma^2 (=\sigma\tau)\}$\\
     $\sigma H = \{\sigma,\sigma\tau\},\sigma^2 H = \{\sigma^2,\sigma^2 \tau (=\tau \sigma)\}$\\
     donc $\sigma H \neq H \sigma$
@@ -411,7 +415,7 @@ On en déduit le théorème de Lagrange :
 
 \section{Sous-groupes distingués}
 
-\begin{definition} 
+\begin{definition}
     Soit $G$ un groupe fini, $H < G$ est dit distingué (ou normal) dans $G$ ssi $\forall x \in G, xH = Hx$.\\
     Le cas échéant on note : $H \triangleleft G$
 \end{definition}
@@ -428,17 +432,17 @@ Si $G$ est abélien, tout $H < G$ est distingué.
 \end{exemple}
 
 \begin{prop}
-    Soit $_H$ \textbackslash $G$ l'ensemble des classes à gauche modulo $H$.\\
+    Soit $H\backslash G$ l'ensemble des classes à gauche modulo $H$.\\
     L'application $\fctsarg{}{(xH,yH)}{xyH}$ est bien définie ssi $H \triangleleft G$.\\
     Idem pour les classes à droites $G/H$.
 \end{prop}
 
 \begin{preuve}
-$\Rightarrow)$ Soit $h \in H,y \in G$, l'application est bien définie, donc $egH = hgH$ donc $yH = hgH$ donc $H = y^{-1}hyH$, donc $y^{-1}hy \in H$.\\
-$\Leftarrow)$ Si $x,x' \in G$ tel que $xH = x'H$, et si $y,y' \in G$ tel que $yH = y'H$, alors on a $h,h' \in H$ vérifiant : $x' = xh$ et $y' = yh'$. Donc $x'y' = xy y^{-1}hyh'$, avec $y^{-1}hyh' \in H$ car $H \triangleleft G$. Donc $x'y'H \subseteq xyH$, par symétrie on a $\supseteq$
+$\Rightarrow :$ Soit $h \in H,y \in G$, l'application est bien définie, donc $egH = hgH$ donc $yH = hgH$ donc $H = y^{-1}hyH$, donc $y^{-1}hy \in H$.\\
+$\Leftarrow : $ Si $x,x' \in G$ tel que $xH = x'H$, et si $y,y' \in G$ tel que $yH = y'H$, alors on a $h,h' \in H$ vérifiant : $x' = xh$ et $y' = yh'$. Donc $x'y' = xy y^{-1}hyh'$, avec $y^{-1}hyh' \in H$ car $H \triangleleft G$. Donc $x'y'H \subseteq xyH$, par symétrie on a $\supseteq$
 \end{preuve}
 
-\begin{theoreme}{Groupe quotient}
+\begin{theoreme}[Groupe quotient]
     Soit $G$ un groupe, $H \triangleleft G$. On note $\bar{x}$ la classe de $x$ modulo $H$, $\displaystyle\frac{G}{H}$ l'ensemble des classes modulo $H$. Alors : \par
     \begin{enumerate}
         \item L'application $\fonction{\ast}{(\displaystyle\frac{G}{H})\times (\displaystyle\frac{G}{H})}{\displaystyle\frac{G}{H}}{(\bar{x},\bar{y})}{\bar{x} \ast \bar{y} := \bar{xy}}$ munit $\displaystyle\frac{G}{H}$ d'une structure de groupe tel que $\bar{e} = H$ est l'élément neutre.
@@ -457,7 +461,7 @@ $\Leftarrow)$ Si $x,x' \in G$ tel que $xH = x'H$, et si $y,y' \in G$ tel que $yH
 \end{preuve}
 
 \begin{theoreme}[Groupes distingués et morphismes]
-    Soit $G$ un groupe. Alors $H \triangleleft G$ ssi $\exists G'$ groupe, $\exists \fctsarg{\phi}{G}{G'}$ morphisme tel que $H = Ker(\phi)$
+    Soit $G$ un groupe. Alors $H \triangleleft G \,$ ssi $\, \exists G'$ groupe, $\exists \fctsarg{\phi}{G}{G'}$ morphisme tel que $H = Ker(\phi)$
 \end{theoreme}
 
 \begin{exemple}
