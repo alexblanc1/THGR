@@ -475,7 +475,7 @@ $\Leftarrow : $ Si $x,x' \in G$ tel que $xH = x'H$, et si $y,y' \in G$ tel que $
     Soit $\fctsarg{\phi}{G}{G'}$ un morphisme de groupe. Alors, $G/Ker(\phi)$ est isomorphe à $Im(\phi)$.
 \end{theoreme}
 
-\chapter{Étude de $\znz$, de $\sn$, de $\mathbb{D}_{n}$}
+\chapter{\texorpdfstring{Étude de $\znz$, de $\sn$, de $\mathbb{D}_{n}$}{Etude de Z/nZ, Sn, Dn}}
 
 \section{J'ai pas le nom...}
 
@@ -537,7 +537,7 @@ Soit $N = N_{A_{4}}(H)$ pour simplifier. On sait que $D(A_{4})<N$ donc $|D(A_{4}
 
 \subsection{Groupes Monogènes}
 
-\begin{definition}{Groupe monogène}
+\begin{definition}[Groupe monogène]
 Un groupe G est dit monogène si il est engendré par une unique élément
 \end{definition}
 
@@ -676,7 +676,7 @@ $G$ n'a pas de d'autres sous-groupes que $G,\{ e \}$ $\Longleftrightarrow  $ G e
 
 
 
-\section{Anneau $\mathbb{Z}/n\mathbb{Z}$}
+\section{\texorpdfstring{Anneau $\mathbb{Z}/n\mathbb{Z}$}{Anneau Z/nZ}}
 
 On rappelle que les opérations d'addition et de multiplication sont bien définies sur $\mathbb{Z}/n\mathbb{Z}$ (pas de dépendance des représentants) et que cet anneau est unitaire. 
 
@@ -692,7 +692,7 @@ On dit que $\bar{k}\in \mathbb{Z}/n\mathbb{Z}$ est inversible s'il existe $\bar{
 	Utiliser la caractérisation précédente avec Bézout.
 \end{preuve}
 
-\section{Produits directs de groupes cycliques, calcul de $\varphi (n)$}
+\section{\texorpdfstring{Produits directs de groupes cycliques, calcul de $\varphi (n)$}{Produits, directs de groupes cycliques, indicatrice d'Euler}}
 On considère le morphisme d'anneaux unitaires : $$f : k\in \mathbb{Z} \to (\bar{k}, \bar{\bar{k}}) \in \mathbb{Z}/n\mathbb{Z} \times \mathbb{Z}/m\mathbb{Z}$$
 
 \begin{theoreme}
@@ -862,6 +862,10 @@ Soient $\sigma,\sigma'\in\sn$. On décompose $\sigma=\tau_1\circ...\circ\tau_k$ 
 \begin{definition}{Groupe alterné}
 Soit $n\geq2$. $\an$ est le noyau de $\epsilon$, on le nomme groupe alterné.
 \end{definition}
+
+\par
+\par
+
 \remarque{C'est un sous groupe distingué de $\sn$ d'indice 2, car le noyau d'un morphisme}
 
 
@@ -877,7 +881,7 @@ Soit $n\geq2$. $\an$ est le noyau de $\epsilon$, on le nomme groupe alterné.
 \begin{preuve}
 \begin{enumeratel}
 \item Soit $\sigma\in\an$, $\sigma$ est un produit d'un nombre pair de transpositions, or $(i,j)(j,k)=(i,j,k)$ et $(i,j)(k,l)=(i,j,k)(j,k,l)$.
-\item Soient $(i,j,k),(i',j',k')$ deux 3-cycles. Il existe $\sigma\in\sn$ tel que $\sigma(i)=i', \\sigma(j)=j', \sigma(k)=k'$. Alors $\sigma(i,j,k)\sigma^{-1}=(i',j',k')$. Sans perte de généralité, on peut supposer que $\sigma\in\an$, en effet $n\geq5$, donc il existe une transposition $\tau=(r,s)$ avec $r,s\notin\{i,j,k\}$, et on peut remplacer $\sigma$ par $\sigma\tau$.
+\item Soient $(i,j,k),(i',j',k')$ deux 3-cycles. Il existe $\sigma\in\sn$ tel que $\sigma(i)=i', \par \sigma(j)=j', \sigma(k)=k'$. Alors $\sigma(i,j,k)\sigma^{-1}=(i',j',k')$. Sans perte de généralité, on peut supposer que $\sigma\in\an$, en effet $n\geq5$, donc il existe une transposition $\tau=(r,s)$ avec $r,s\notin\{i,j,k\}$, et on peut remplacer $\sigma$ par $\sigma\tau$.
 \item $D(\an)\subset D(\sn)\subset\an$ car si $a,b\in\sn$, alors $\epsilon([a,b])=1$.\\
 Montrons que si $n\geq5$, les 3-cycles, qui engendrent $\an$, sont des commutateurs (de $\an$).\\
 Soit $\sigma=(i,j,k)$ un 3-cycle. $\sigma^2$ est aussi un 3-cycle donc d'après $2.$ les deux sont conjugués : il existe $\eta\in\an$ tel que $\sigma^2=\eta\sigma\eta^{-1}$ i.e. $\sigma=[\eta,\sigma]$.
