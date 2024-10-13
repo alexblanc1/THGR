@@ -13,7 +13,15 @@
 \usepackage{tikz} % pour les diagrammes
 \usepackage{enumitem} % pour modifier facilement les items/ ennumérations
 \usepackage[T1]{fontenc}
-\usepackage[pdftex]{hyperref} 
+\usepackage[pdftex]{hyperref} %pour les liens ds le poly
+\usepackage{framed}%pour faire les bares de preuves
+
+
+\renewenvironment{leftbar}{%
+  \def\FrameCommand{\vrule width 0.4pt \hspace{10pt}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+ {\endMakeFramed}%une commande obsucure du net
+
 
 \newenvironment{definition}[1][]{
     \begin{tcolorbox}[colframe= white]
@@ -22,19 +30,22 @@
     }
     {\end{tcolorbox}}
 
-%\newenvironment{preuve}{
-%    \begin{changebar}
-%    \noindent\textbf{Preuve :}\\
-%    \begin{flushright}
+\newenvironment{preuve}{\vspace*{0.5cm}
+    \begin{leftbar}
+    \noindent\textbf{Preuve :}\par}{
+    \begin{flushright}
+    $\square$
+    \end{flushright}
+    \end{leftbar}
+}
+
+%\newenvironment{preuve}{\begin{tcolorbox}[opacityfill=0,colframe= white]
+%    \textbf{Preuve :}
+%\par }
+%    {\begin{flushright}
 %    $\square$
 %    \end{flushright}
-%    \end{changebar}
-%}
-
-\newenvironment{preuve}{\begin{tcolorbox}[colframe= white]
-    \textbf{Preuve :}
-\par }
-    {\end{tcolorbox}}
+%    \end{tcolorbox}}
 
 
 \newenvironment{prop}{\begin{tcolorbox}[colframe= white]
@@ -310,8 +321,9 @@ Soit $g\in G$ tel que $\tau_g = Id_G$. Alors $\forall x \in G, gx =  x$. Si on p
     
 
 
-\remarque{$\forall ~x = (x_1 ,x_2) \in G_1 \times G_2,$ on a :\\
-    $x = (p_1 (x), p_2 (x)) = (x_1 ,x_2) = (x_1 ,e_2)(e_1 ,x_2) = (e_1 ,x_2)(x_1 ,e_2) = q_1 (x_1)q_2 (x_2) = q_2(x_2)q_2(x_1)$\\}
+\remarque{
+$\forall ~x = (x_1 ,x_2) \in G_1 \times G_2,$ on a :\par
+    $x = (p_1 (x), p_2 (x)) = (x_1 ,x_2) = (x_1 ,e_2)(e_1 ,x_2) = (e_1 ,x_2)(x_1 ,e_2) = q_1 (x_1)q_2 (x_2) = q_2(x_2)q_2(x_1)$}
     
 
 \begin{theoreme}
@@ -696,7 +708,7 @@ On considère le morphisme d'anneaux unitaires : $$f : k\in \mathbb{Z} \to (\bar
 	\begin{split}
 		f \text{ est surjective}  & \iff | Im(f) | =mn \\
  		& \iff |\mathbb{Z}/ker(f)| = mn \; \textit{(grâce au théorème d'isomorphisme)} \\ 
-		& \iff ker(f)= mn\mathbb{Z} \\ 
+		& \iff ker(f)= mn\mathbb{Z} \\ 
 		& \iff m\mathbb{Z} \cap n\mathbb{Z} = mn\mathbb{Z} \\
 		& \iff m \wedge n =1
 	\end{split}
@@ -715,7 +727,7 @@ On considère le morphisme d'anneaux unitaires : $$f : k\in \mathbb{Z} \to (\bar
 Il nous suffit de calculer $\varphi (p^\alpha)$ pour $p$ premier et $\alpha \geq 1$. On a : 
 \begin{equation*} \label{eq1}
 	\begin{split}
-	\varphi (p^\alpha) & = | \{ k \in \{1, \cdots , p^\alpha \} : k \wedge p^\alpha =1 \}|  \\
+	\varphi (p^\alpha) & = | \{ k \in \{1, \cdots , p^\alpha \} : k \wedge p^\alpha =1 \}|  \\
 	& = | \{ 1, \cdots , p^\alpha \} \backslash \{ p, 2p, \cdots , p^{\alpha -1}p \} | \\
 	& =p^{\alpha}-p^{\alpha -1}
 	\end{split}
