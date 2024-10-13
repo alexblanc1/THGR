@@ -104,15 +104,6 @@
 \newcommand{\sign}{\epsilon(\sigma)}
 \newcommand{\dsp}{\displaystyle}
 
-% l'indentation des items, ainsi que l'espace entre les items est mal définie pour les deux environnements suivants :
-\newlist{itemizel}{itemize*}{1} % comme itemize mais sans saut de ligne avant le premier item, ni après le dernier, de profondeur max 1 (pas de itemizel dans un itemizel), et de label par défaut bullet
-\setlist[itemizel]{itemjoin=\\, label=$\bullet$}% !TEX useOldSyncParser
-
-
-\newlist{enumeratel}{enumerate*}{1} % comme enumerate mais sans saut de ligne avant le premier item, ni après le dernier, de profondeur max 1 (pas de itemizel dans un itemizel)
-\setlist[enumeratel]{itemjoin=\\, label=\arabic*.}
-
-
 \title{Théorie des groupes}
 \author{Bcp de monde... }
 \date{September 2024}
@@ -315,13 +306,13 @@ Soit $g\in G$ tel que $\tau_g = Id_G$. Alors $\forall x \in G, gx =  x$. Si on p
 \end{enumerate}
 \end{definition}
 
-\remarque
-    $\im (q_i)$ est isomorphe à $G_i$. Ainsi $G1 \times G_2$ contient un sous-groupe isomorphe à $G_1$, de même pour $G_2$.
+\remarque{$\im (q_i)$ est isomorphe à $G_i$. Ainsi $G1 \times G_2$ contient un sous-groupe isomorphe à $G_1$, de même pour $G_2$.}
+    
 
 
-\remarque
-    $\forall ~x = (x_1 ,x_2) \in G_1 \times G_2,$ on a :\\
-    $x = (p_1 (x), p_2 (x)) = (x_1 ,x_2) = (x_1 ,e_2)(e_1 ,x_2) = (e_1 ,x_2)(x_1 ,e_2) = q_1 (x_1)q_2 (x_2) = q_2(x_2)q_2(x_1)$
+\remarque{$\forall ~x = (x_1 ,x_2) \in G_1 \times G_2,$ on a :\\
+    $x = (p_1 (x), p_2 (x)) = (x_1 ,x_2) = (x_1 ,e_2)(e_1 ,x_2) = (e_1 ,x_2)(x_1 ,e_2) = q_1 (x_1)q_2 (x_2) = q_2(x_2)q_2(x_1)$\\}
+    
 
 \begin{theoreme}
     Un groupe $G$ est isomorphe au produit direct $G1 \times G_2$ ssi $G$ contient deux sous-groupes $H_1,H_2$ tel que :
@@ -380,11 +371,10 @@ Soit $H < G$. On définit $x\mathcal{R}_H y \iff xy^{-1} \in H$ et $x _{H}\mathc
 \end{exemple}
 
 \begin{exemple}
-    Dans $\mathbb{S}_3, \sigma := (1,2,3),\tau := (1,2)$\\
-    $\mathbb{S}_3 = \{e,\sigma,\sigma^2,\tau,\tau\sigma,\sigma\tau\}$, pour $H = \{e,\tau \}$\\
-    $H_{\sigma} = \{\sigma, \tau\sigma\}, H_{\sigma^2} = \{\sigma^2,\tau\sigma^2 (=\sigma\tau)\}$\\
-    $\sigma H = \{\sigma,\sigma\tau\},\sigma^2 H = \{\sigma^2,\sigma^2 \tau (=\tau \sigma)\}$\\
-    donc $\sigma H \neq H \sigma$
+	On se place dans $\mathcal{S}_3$, on pose $\sigma=(1,2,3)$ et $\tau=(1,2)$, on a alors $\mathbb{S}_3 = \{e,\sigma,\sigma^2,\tau,\tau\sigma,\sigma\tau\}$.\par Pour $H = \{e,\tau \}$, on a :\par
+    $H\sigma = \{\sigma, \tau\sigma\}, H\sigma^2 = \{\sigma^2,\tau\sigma^2 (=\sigma\tau)\}$\par
+    $\sigma H = \{\sigma,\sigma\tau\},\sigma^2 H = \{\sigma^2,\sigma^2 \tau (=\tau \sigma)\}$\par
+    donc $\sigma H \neq H \sigma$.
 \end{exemple}
 
 \begin{exemple}
@@ -746,7 +736,7 @@ Soit $G$ un groupe fini abélien d'ordre $N$. Il existe une décomposition uniqu
 On note $\sn$  l'ensemble des permutations de $\{1, 2, ..., n\}$ que l'on munit de la loi de composition : c'est un groupe d'ordre $n!$
 
 \subsection{Support, orbite}
-\begin{definition}{support}
+\begin{definition}[support]
 Le support de $\sigma \in \sn$ est l'ensemble $\{i\in\unn\; ; \; \sigma(i)\neq i\}$
 \end{definition}
 
@@ -759,21 +749,21 @@ Soit $\sigma\in\sn$. Montrer que
 \end{itemize}
 \end{exo}
 
-\begin{definition}{orbite}
+\begin{definition}[orbite]
 Soit $\sigma\in\sn$. On définit la relation d'équivalence sur $\unn$ : \[i\mathcal{R}j \Longleftrightarrow \exists r\in\Z \;|\;\sigma^r(i)=j.\]
 La classe de $i$ est notée $\Omega(i) = \{\sigma^r(i), r\in\Z\}$ et est appelée $\sigma$-orbite de $i$.
 \end{definition}
 
 \subsection{Notion de cycle}
-\begin{definition}{r-cycle}
+\begin{definition}[r-cycle]
 $\sigma \in\sn$ est un r-cycle si il existe $j_1, ..., j_r$ dans $\unn$ tq $\sigma(j_1)=j_2, ..., \sigma(j_{r-1})=j_r, \sigma(j_r)=j_1$, et si pour $k\notin\{j_1,...,j_r\}, \sigma(k)=k$.\\Alors le support de $\sigma$ est $\{j_1,...,j_r\}$. On notera $\sigma = (j_1, ..., j_r)$
 \end{definition}
 
-\begin{definition}{transposition, permutation circulaire}
-\begin{enumeratel}
+\begin{definition}[transposition, permutation circulaire]
+\begin{enumerate}
 \item Un 2-cycle est appelé transposition
 \item le n-cycle $(1, ..., n)$ est appelé permutation circulaire
-\end{enumeratel}
+\end{enumerate}
 \end{definition}
 
 \begin{exemple}
@@ -791,10 +781,10 @@ Toute permutation $\sigma\in\sn\setminus\{e\}$ se décompose sous la forme $\sig
 \end{theoreme}
 
 \begin{exo}
-\begin{enumeratel}
+\begin{enumerate}
 \item montrer que l'ordre de $\sigma$ est égal au ppcm des longueurs des cycles $\gamma_1, ..., \gamma_s$.
 \item calculer $\sigma_0^{1000}$.
-\end{enumeratel}
+\end{enumerate}
 \end{exo}
 
 \subsection{Formules importantes}
@@ -821,10 +811,10 @@ preuve : $\eta^i(1,2)\eta^{-i}=(i+1,i+2)$
 Soit $n \geq 2$.
 
 \begin{theoreme}
-\begin{enumeratel}
+\begin{enumerate}
 \item $\sn$ est engendré par les transpositions
 \item $\sn$ est engendré par les transpositions du type $(1,j)$ où $j\in\{2,...,n\}$
-\end{enumeratel}
+\end{enumerate}
 \end{theoreme}
 
 \subsection{Centre}
@@ -833,16 +823,16 @@ $Z(\sn)=\{e\}$ pour $n=1$ et $n\geq3$.
 \end{theoreme}
 
 \subsection{Signature}
-\begin{definition}{signature}
+\begin{definition}[signature]
 Soit $\sigma\in\sn$. On pose $\epsilon(\sigma)=(-1)^{n-t}$ où $t$ est le nombre de $\sigma$-orbites différentes.
 \end{definition}
 
 \begin{exemple}
-\begin{itemizel}[label=$\bullet$]
+\begin{itemize}[label=$\bullet$]
 \item $\sigma=e$ : on a $\sigma(i)=i$ pour tout $i\in\unn$, chaque point est une orbite donc $t=n$ et $\sign=1$
 \item $\sigma=(1,2)$ : ici il y a $n-2$ éléments fixés qui donnent chacun une orbite, et $\{1,2\}$ est une autre orbite donc $\sign=-1$.
 \item $\sigma=(1,...,r)$ : $\sign=(-1)^{r-1}$
-\end{itemizel}
+\end{itemize}
 \end{exemple}
 
 \begin{prop}
@@ -859,7 +849,7 @@ Si $n\geq2$, $\epsilon:\sn\longrightarrow\{1,-1\}$ est un morphisme de groupes s
 Soient $\sigma,\sigma'\in\sn$. On décompose $\sigma=\tau_1\circ...\circ\tau_k$ et $\sigma'=\tau_1'\circ...\circ\tau_{k'}'$ en produits de transpositions. \\Alors $\epsilon(\sigma\circ\sigma')=(-1)^{k+k'}=\sign\times\epsilon(\sigma')$.
 \end{preuve}
 
-\begin{definition}{Groupe alterné}
+\begin{definition}[Groupe alterné]
 Soit $n\geq2$. $\an$ est le noyau de $\epsilon$, on le nomme groupe alterné.
 \end{definition}
 
@@ -871,21 +861,21 @@ Soit $n\geq2$. $\an$ est le noyau de $\epsilon$, on le nomme groupe alterné.
 
 \remarque{Si $\tau$ est une transposition, $(\tau\an)\cap\an=\emptyset$, d'où $\sn=(\tau\an)\sqcup\an$.}
 \begin{theoreme}
-\begin{enumeratel}
+\begin{enumerate}
 \item Si $n\geq3$, $\an$ est engendré par les 3-cycles.
 \item Si $n\geq5$, deux 3-cycles sont conjugués dans $\an$ 
 \item Si $n\geq2$ alors $D(\sn)=\an$, si $n\geq5$ alors $D(\an)=\an$.
-\end{enumeratel}
+\end{enumerate}
 \end{theoreme}
 
 \begin{preuve}
-\begin{enumeratel}
+\begin{enumerate}
 \item Soit $\sigma\in\an$, $\sigma$ est un produit d'un nombre pair de transpositions, or $(i,j)(j,k)=(i,j,k)$ et $(i,j)(k,l)=(i,j,k)(j,k,l)$.
-\item Soient $(i,j,k),(i',j',k')$ deux 3-cycles. Il existe $\sigma\in\sn$ tel que $\sigma(i)=i', \par \sigma(j)=j', \sigma(k)=k'$. Alors $\sigma(i,j,k)\sigma^{-1}=(i',j',k')$. Sans perte de généralité, on peut supposer que $\sigma\in\an$, en effet $n\geq5$, donc il existe une transposition $\tau=(r,s)$ avec $r,s\notin\{i,j,k\}$, et on peut remplacer $\sigma$ par $\sigma\tau$.
+\item Soient $(i,j,k),(i',j',k')$ deux 3-cycles. Il existe $\sigma\in\sn$ tel que $\sigma(i)=i', \sigma(j)=j', \sigma(k)=k'$. Alors $\sigma(i,j,k)\sigma^{-1}=(i',j',k')$. \par Sans perte de généralité, on peut supposer que $\sigma\in\an$, en effet $n\geq5$, donc il existe une transposition $\tau=(r,s)$ avec $r,s\notin\{i,j,k\}$, et on peut remplacer $\sigma$ par $\sigma\tau$.
 \item $D(\an)\subset D(\sn)\subset\an$ car si $a,b\in\sn$, alors $\epsilon([a,b])=1$.\\
 Montrons que si $n\geq5$, les 3-cycles, qui engendrent $\an$, sont des commutateurs (de $\an$).\\
 Soit $\sigma=(i,j,k)$ un 3-cycle. $\sigma^2$ est aussi un 3-cycle donc d'après $2.$ les deux sont conjugués : il existe $\eta\in\an$ tel que $\sigma^2=\eta\sigma\eta^{-1}$ i.e. $\sigma=[\eta,\sigma]$.
-\end{enumeratel}
+\end{enumerate}
 \end{preuve}
 
 \noindent\underline{\textbf{Cas particuliers :}}
