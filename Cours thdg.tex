@@ -167,13 +167,13 @@ Un groupe est un ensemble non vide G munis d'une loi $\ast$ telle que :
 
 \end{definition}
 
-\begin{definition}{Groupe abélien}
+\begin{definition}[Groupe abélien]
 Un groupe G est dit \underline{abélien} si : $\forall (x,y)\in G,~xy=yx$
 \end{definition}
 
 \subsection{Sous-groupes}
 
-\begin{definition}{Sous-groupe}
+\begin{definition}[Sous-groupe]
 Un sous-ensemble H de G est appelé sous-groupe si :
 \begin{itemize}[label=$\bullet$]
 \item $e\in H$
@@ -181,14 +181,14 @@ Un sous-ensemble H de G est appelé sous-groupe si :
 \end{itemize}
 \end{definition}
 
-\begin{definition}{Groupe fini}
+\begin{definition}[Groupe fini]
 G est dit fini si il est cardinal fini, on note alors $o(G) = |G|$, appelé ordre de G.
 \end{definition}
 
 
 \subsection{Sous-groupe engendré}
 
-\begin{definition}{Sous-groupe engendré par une partie}
+\begin{definition}[Sous-groupe engendré par une partie]
 Soient G un groupe et $S\subset G$\\
 Soit $G_{S}$ l'ensemble des sous groupes de G qui contiennent S. \\
 {\color{white}-}\\
@@ -197,12 +197,12 @@ On appelle sous groupe engendré par S l'ensemble : $ \dsp\langle S\rangle := \b
 Si de plus $\langle S\rangle = G$ on dit que S est une partie génératrice de G ou que S engendre G
 \end{definition}
 
-\begin{definition}{Groupe de type fini}
+\begin{definition}[Groupe de type fini]
 Si G est engendré par un singleton, on dit que G est monogène. \\
 Un groupe monogène fini est dit cyclique. \\Si il existe une partie finie $S\subseteq G$ qui engendre G, on dit que G est de type fini.
 \end{definition}
 
-\begin{definition}{Ordre d'un élément}
+\begin{definition}[Ordre d'un élément]
 \begin{itemize}[label=$\bullet$]
 \item Si $\langle x \rangle$ est infini, on dit que $x$ est d'ordre infini.
 \item Si $\langle x \rangle$ est fini, on dit que $x$ est d'ordre $\lvert\langle x \rangle\rvert$
@@ -211,7 +211,7 @@ Si $x^{n}=e$ alors $o(x)|n$
 \end{definition}
 
 \section{morphismes de groupes}
-\begin{definition}{Morphisme de groupe}
+\begin{definition}[Morphisme de groupe]
 Soit $(G,\ast), (H,\cdot)$ deux groupes. Un morphisme de groupes de G dans H est une application
 {\color{white}-}\\
 $\fctsarg{f}{G}{H}$ tel que $\forall x,y \in G, f(x \ast y) = f(x) \cdot f(y)$
@@ -238,7 +238,7 @@ $\fctsarg{f}{G}{H}$ tel que $\forall x,y \in G, f(x \ast y) = f(x) \cdot f(y)$
 
 \subsection{Isomorphismes}
 
-\begin{definition}{Isomorphisme}
+\begin{definition}[Isomorphisme]
 \begin{enumerate}
     \item Un isomorphisme de $G$ dans $H$ est un morphisme de groupes bijectif.
     \item $G$ et $H$ sont isomorphe ssi il existe un isomorphisme entre les deux.
@@ -257,7 +257,7 @@ $\fctsarg{f}{G}{H}$ tel que $\forall x,y \in G, f(x \ast y) = f(x) \cdot f(y)$
 \end{enumerate}
 \end{exo}
 
-\begin{definition}{Automorphisme}
+\begin{definition}[Automorphisme]
     Un automorphisme est un isomorphisme d'un groupe $G$ dans lui-même. L'ensemble des automorphismes de G se note $Aut(G)$.
 \end{definition}
 
@@ -302,7 +302,7 @@ Soit $g\in G$ tel que $\tau_g = Id_G$. Alors $\forall x \in G, gx =  x$. Si on p
 
 \section{Produits directs}
 
-\begin{definition}{Produit direct}
+\begin{definition}[Produit direct]
     Le groupe "produit direct" de deux groupes $G_1, G_2$ est l'ensemble $G_1 \times G_2$ muni de la loi :\\
     $\fonction{\cdot}{(G_1 \times G_2)\times(G_1 \times G_2}{G_1 \times G_2}{((x_1 ,x_2),(y_1 ,y_2))}{(x_1 y_1 ,x_2 y_2)}$
 \end{definition}
@@ -310,7 +310,7 @@ Soit $g\in G$ tel que $\tau_g = Id_G$. Alors $\forall x \in G, gx =  x$. Si on p
 \begin{exo}
     vérifier que $G_1 \times G_2$ muni de cette loi est bien un groupe.
 \end{exo}
-\begin{definition}{Projections et injections canoniques}
+\begin{definition}[Projections et injections canoniques]
 \begin{enumerate}
     \item Projections canoniques $\fonction{p_i}{G_1 \times G_2}{G_i}{(x_1 ,x_2)}{x_i}$.
     \item Injections canoniques : $\fonction{q_1}{G_1}{G_1 \times G_2}{x_1}{(x_1 ,e_2)}$ et $\fonction{q_2}{G_2}{G_1 \times G_2}{x_2}{(e_1 ,x_2)}$
@@ -332,7 +332,7 @@ $\forall ~x = (x_1 ,x_2) \in G_1 \times G_2,$ on a :\par
         \item $H_i$ est isomorphe à $G_i (i = 1,2)$
         \item $h_1 h_2 = h_2 h_1, \forall h_1\in H_1, \forall h_2\in H_2$
         \item $G = H_1 H_2$
-        \item $H_1 \cap H_1 = \{e_G\}$
+        \item $H_1 \cap H_2 = \{e_G\}$
     \end{enumerate}
 \end{theoreme}
 
@@ -365,7 +365,7 @@ $\forall ~x = (x_1 ,x_2) \in G_1 \times G_2,$ on a :\par
 \end{preuve}
 
 \begin{exemple}
-$(\Z / 2^{\alpha}\Z,+,\times) est anneau$. On note $(\Z / 2^{\alpha}\Z)^{\times}$ l'ensemble des éléments inversibles de l'anneau (pour la loi $\times$). Si $\alpha \ge 3$, $(\Z / 2^{\alpha}\Z)^{\times}$ est isomorphe à $(\Z /2^{\alpha -2}\Z)\times(\Z / 2\Z)$
+$(\Z / 2^{\alpha}\Z,+,\times)$ est anneau. On note $(\Z / 2^{\alpha}\Z)^{\times}$ l'ensemble des éléments inversibles de l'anneau (pour la loi $\times$). Si $\alpha \ge 3$, $(\Z / 2^{\alpha}\Z)^{\times}$ est isomorphe à $(\Z /2^{\alpha -2}\Z)\times(\Z / 2\Z)$
 \end{exemple}
 
 \chapter{Classes modulo un sous-groupe, sous-groupes distingués}
@@ -402,7 +402,7 @@ Soit $\{e\}\cup\{x_i,i\in I\}$ un système de représentants des classes à gauc
 \remarque
 L'application $\fctsarg{}{x_i H}{H (x_i)^{-1}}$ est une bijection de l'ensemble des classes à gauche sur l'ensemble des classes à droite.
 
-\begin{definition}{Indice de H dans G}
+\begin{definition}[Indice de H dans G]
     L'indice de $H$ dans $G$ est le cardinal (fini ou infini) de l'ensemble des classes à gauche (= cardinal de l'ensemble des classes à droite), il est noté $[G:H]$
 \end{definition}
 
@@ -517,8 +517,8 @@ $\Leftarrow : $ Si $x,x' \in G$ tel que $xH = x'H$, et si $y,y' \in G$ tel que $
     \end{itemize}
 \end{exo}
 
-\begin{definition}{Normalisateur d'un sous-groupe}
-Soit $H<G$, on note$N_{G}(H) = \{g\in G , ~gH=Hg~\}$, on l'appel le normalisateur de H dans G
+\begin{definition}[Normalisateur d'un sous-groupe]
+Soit $H<G$, on note$N_{G}(H) = \{g\in G , ~gH=Hg\}$, on l'appel le normalisateur de H dans G
 \end{definition}
 
 \begin{exo}
@@ -617,7 +617,7 @@ Alors $K = \pi(k\Z)$ est le sous-groupe de $\Z/n\Z$ engendré par $\pi(k)$, $K$ 
 
 \begin{theoreme}
 Soit $G = \langle x \rangle$ un groupe cyclique d'ordre n alors :\\
-Pour tout diviseur $d$ de $n$, il existe un unique sous groupe d'ordre d de G et ce sous groupe est engendré par $x^{\dfrac{n}{d}}$
+Pour tout diviseur $d$ de $n$, il existe un unique sous groupe d'ordre d de G et ce sous groupe est engendré par $x^{n/d}$
 \end{theoreme}
 
 \begin{prop}
@@ -625,7 +625,7 @@ Pour tout diviseur $d$ de $n$, il existe un unique sous groupe d'ordre d de G et
 Soit G un groupe non trivial alors :
 
 \begin{center}
-$G$ n'a pas de d'autres sous-groupes que $G,\{ e \}$ $\Longleftrightarrow  $ G est cyclique d'ordre $p$ premier
+$G$ n'a pas de d'autres sous-groupes que $G$ et $\{ e \}$ $\Longleftrightarrow  $ G est cyclique d'ordre $p$ premier
 \end{center} 
 \end{prop}
 
@@ -666,7 +666,7 @@ $G$ n'a pas de d'autres sous-groupes que $G,\{ e \}$ $\Longleftrightarrow  $ G e
 	L'ensemble des générateurs de $G \simeq \mathbb{Z}/n\mathbb{Z}$ est aussi égal à $\{\bar{k} \in \mathbb{Z}/n\mathbb{Z} : 0 \leq k \leq n-1, k \wedge n =1\}$
 \end{exo}
 
-\begin{definition}{Fonction d'Euler}
+\begin{definition}[Fonction d'Euler]
 	La fonction d'Euler est la fonction $\varphi : \mathbb{N}^* \rightarrow \mathbb{N}^*$ telle que :
 \begin{itemize}
 \item $\varphi (1) = 1$ 
@@ -682,7 +682,7 @@ $G$ n'a pas de d'autres sous-groupes que $G,\{ e \}$ $\Longleftrightarrow  $ G e
 
 On rappelle que les opérations d'addition et de multiplication sont bien définies sur $\mathbb{Z}/n\mathbb{Z}$ (pas de dépendance des représentants) et que cet anneau est unitaire. 
 
-\begin{definition}{Inverse modulo $n$}
+\begin{definition}[Inverse modulo $n$]
 On dit que $\bar{k}\in \mathbb{Z}/n\mathbb{Z}$ est inversible s'il existe $\bar{m} \in \mathbb{Z}/n\mathbb{Z}$ tel que $\bar{k}\bar{m}=\bar{1}$
 \end{definition}
 
@@ -747,8 +747,8 @@ Soit $G$ un groupe fini abélien d'ordre $N$. Il existe une décomposition uniqu
 \section{Groupes symétriques}
 On note $\sn$  l'ensemble des permutations de $\{1, 2, ..., n\}$ que l'on munit de la loi de composition : c'est un groupe d'ordre $n!$
 
-\subsection{Support, orbite}
-\begin{definition}[support]
+\subsection{Support et Orbite}
+\begin{definition}[Support]
 Le support de $\sigma \in \sn$ est l'ensemble $\{i\in\unn\; ; \; \sigma(i)\neq i\}$
 \end{definition}
 
@@ -761,7 +761,7 @@ Soit $\sigma\in\sn$. Montrer que
 \end{itemize}
 \end{exo}
 
-\begin{definition}[orbite]
+\begin{definition}[Orbite]
 Soit $\sigma\in\sn$. On définit la relation d'équivalence sur $\unn$ : \[i\mathcal{R}j \Longleftrightarrow \exists r\in\Z \;|\;\sigma^r(i)=j.\]
 La classe de $i$ est notée $\Omega(i) = \{\sigma^r(i), r\in\Z\}$ et est appelée $\sigma$-orbite de $i$.
 \end{definition}
@@ -771,7 +771,7 @@ La classe de $i$ est notée $\Omega(i) = \{\sigma^r(i), r\in\Z\}$ et est appelé
 $\sigma \in\sn$ est un r-cycle si il existe $j_1, ..., j_r$ dans $\unn$ tq $\sigma(j_1)=j_2, ..., \sigma(j_{r-1})=j_r, \sigma(j_r)=j_1$, et si pour $k\notin\{j_1,...,j_r\}, \sigma(k)=k$.\\Alors le support de $\sigma$ est $\{j_1,...,j_r\}$. On notera $\sigma = (j_1, ..., j_r)$
 \end{definition}
 
-\begin{definition}[transposition, permutation circulaire]
+\begin{definition}[Transposition et permutation circulaire]
 \begin{enumerate}
 \item Un 2-cycle est appelé transposition
 \item le n-cycle $(1, ..., n)$ est appelé permutation circulaire
@@ -785,7 +785,7 @@ Si $\dsp\sigma_0=\left(\begin{array}{cccccc}
 \begin{array}{cl}
 \leftarrow&i\\\leftarrow&\sigma_0(i)
 \end{array}$\\
-alors $\sigma_0=(1,2,3)(4,6)$.
+alors $\sigma_0=(1,3,2)(4,6)$.
 \end{exemple}
 
 \begin{theoreme}
@@ -794,17 +794,17 @@ Toute permutation $\sigma\in\sn\setminus\{e\}$ se décompose sous la forme $\sig
 
 \begin{exo}
 \begin{enumerate}
-\item montrer que l'ordre de $\sigma$ est égal au ppcm des longueurs des cycles $\gamma_1, ..., \gamma_s$.
-\item calculer $\sigma_0^{1000}$.
+\item Montrer que l'ordre de $\sigma$ est égal au ppcm des longueurs des cycles $\gamma_1, ..., \gamma_s$.
+\item Calculer $\sigma_0^{1000}$.
 \end{enumerate}
 \end{exo}
 
 \subsection{Formules importantes}
 \begin{prop}
-Pour tout$\tau\in\sn$, $\tau(j_1,...,j_r)\tau^{-1}=(\tau(j_1),...,\tau(j_r))$.
+Pour tout $\tau\in\sn$, $\tau(j_1,...,j_r)\tau^{-1}=(\tau(j_1),...,\tau(j_r))$.
 \end{prop}
 \begin{prop}
-$(j_1,...,j_r)=(j_1,j_2)(j_2,j_3)...(j_{r-1},j_r)$
+On a  : $(j_1,...,j_r)=(j_1,j_2)(j_2,j_3)...(j_{r-1},j_r)$
 \end{prop}
 
 \noindent\underline{\textbf{Cas particulier :}} $(a,b,c)=(a,b)(b,c)$
@@ -835,7 +835,7 @@ $Z(\sn)=\{e\}$ pour $n=1$ et $n\geq3$.
 \end{theoreme}
 
 \subsection{Signature}
-\begin{definition}[signature]
+\begin{definition}[Signature]
 Soit $\sigma\in\sn$. On pose $\epsilon(\sigma)=(-1)^{n-t}$ où $t$ est le nombre de $\sigma$-orbites différentes.
 \end{definition}
 
@@ -876,14 +876,15 @@ Soit $n\geq2$. $\an$ est le noyau de $\epsilon$, on le nomme groupe alterné.
 \begin{enumerate}
 \item Si $n\geq3$, $\an$ est engendré par les 3-cycles.
 \item Si $n\geq5$, deux 3-cycles sont conjugués dans $\an$ 
-\item Si $n\geq2$ alors $D(\sn)=\an$, si $n\geq5$ alors $D(\an)=\an$.
+\item Si $n\geq2$, alors $D(\sn)=\an$, si $n\geq5$ alors $D(\an)=\an$.
 \end{enumerate}
 \end{theoreme}
 
 \begin{preuve}
 \begin{enumerate}
 \item Soit $\sigma\in\an$, $\sigma$ est un produit d'un nombre pair de transpositions, or $(i,j)(j,k)=(i,j,k)$ et $(i,j)(k,l)=(i,j,k)(j,k,l)$.
-\item Soient $(i,j,k),(i',j',k')$ deux 3-cycles. Il existe $\sigma\in\sn$ tel que $\sigma(i)=i', \sigma(j)=j', \sigma(k)=k'$. Alors $\sigma(i,j,k)\sigma^{-1}=(i',j',k')$. \par Sans perte de généralité, on peut supposer que $\sigma\in\an$, en effet $n\geq5$, donc il existe une transposition $\tau=(r,s)$ avec $r,s\notin\{i,j,k\}$, et on peut remplacer $\sigma$ par $\sigma\tau$.
+\item Soient $(i,j,k),(i',j',k')$ deux 3-cycles. Il existe $\sigma\in\sn$ tel que $\sigma(i)=i', \sigma(j)=j', \sigma(k)=k'$. Alors $\sigma(i,j,k)\sigma^{-1}=(i',j',k')$. 
+Sans perte de généralité, on peut supposer que $\sigma\in\an$, en effet $n\geq5$, donc il existe une transposition $\tau=(r,s)$ avec $r,s\notin\{i,j,k\}$, et on peut remplacer $\sigma$ par $\sigma\tau$.
 \item $D(\an)\subset D(\sn)\subset\an$ car si $a,b\in\sn$, alors $\epsilon([a,b])=1$.\\
 Montrons que si $n\geq5$, les 3-cycles, qui engendrent $\an$, sont des commutateurs (de $\an$).\\
 Soit $\sigma=(i,j,k)$ un 3-cycle. $\sigma^2$ est aussi un 3-cycle donc d'après $2.$ les deux sont conjugués : il existe $\eta\in\an$ tel que $\sigma^2=\eta\sigma\eta^{-1}$ i.e. $\sigma=[\eta,\sigma]$.
