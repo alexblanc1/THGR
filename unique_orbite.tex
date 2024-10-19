@@ -1,0 +1,60 @@
+\begin{tikzpicture}
+\clip (-5,-5) rectangle (5,5);
+\pgfmathsetmacro{\r}{4}
+\draw (0,0) circle (\r);
+
+%positionnement des points :
+\node (i) at ({90:\r+0.3}) {i};
+\node (si) at ({60:\r+0.4}) {$\sigma(i)$};
+\node (ssi) at ({30:\r+0.5}) {$\sigma^{2}(i)$};
+\node (spmui) at ({120:\r+0.5}) {$\sigma^{p-1}(i)$};
+\node (j) at ({-70:\r+0.6}) {$j=\sigma^{q}(i)$};
+\node (sj) at ({-105:\r+0.4}) {$\sigma(j)$};
+\node (api) at ({0:\r+0.5}) {};
+\node (avj) at ({-40:\r+0.5}) {};
+\node (apj) at ({-135:\r+0.5}){};
+\node (avi) at ({150:\r+0.5}) {};
+
+
+% les flèches
+\draw [line width = 0.75pt,->] (i) to [bend left = 20](si);
+\draw [line width = 0.75pt,->] (si) to [bend left = 20](ssi);
+\draw [line width = 0.75pt,->] (ssi) to [bend left = 20](api);
+\draw [line width = 3pt, dash pattern = on 0pt off 12 pt, line cap=round](api) to [bend left =15] (avj);
+\draw [line width = 0.75pt,->] (avj) to [bend left = 15](j);
+\draw [line width = 0.75pt,->] (j) to [bend left = 20](sj);
+\draw [line width = 0.75pt,->] (sj) to [bend left = 20](apj);
+\draw [line width = 3pt, dash pattern = on 0pt off 12 pt, line cap=round](apj) to [bend left =30] (avi);
+\draw [line width = 0.75pt,->] (avi) to [bend left = 20](spmui);
+\draw [line width = 0.75pt,->] (spmui) to [bend left = 20](i);
+
+%%%%%%%Les autres flèches%%%%%%%%%%%%%%%%%%%%%%ù
+
+\node (i1) at ({90:\r-0.3}) {};
+\node (si1) at ({60:\r-0.3}) {};
+\node (ssi1) at ({30:\r-0.3}) {};
+\node (spmui1) at ({120:\r-0.3}) {};
+\node (j1) at ({-70:\r-0.3}) {};
+\node (sj1) at ({-105:\r-0.3}) {};
+\node (api1) at ({0:\r-0.3}) {};
+\node (avj1) at ({-40:\r-0.3}) {};
+\node (apj1) at ({-135:\r-0.3}){};
+\node (avi1) at ({150:\r-0.3}) {};
+
+\begin{scope}[red]
+\draw [line width = 0.75pt,->] (i1) to [bend right = 20](si1);
+\draw [line width = 0.75pt,->] (si1) to [bend right = 20](ssi1);
+\draw [line width = 0.75pt,->] (ssi1) to [bend right = 20](api1);
+\draw [line width = 3pt, dash pattern = on 0pt off 12 pt, line cap=round](api1) to [bend right =15] (avj1);
+\draw [line width = 0.75pt,->] (avj1) to [bend right = 15](j1);
+\draw [line width = 0.75pt,->] (j1) to [bend right = 20] node[auto,sloped]{$\sigma\circ\tau$}(i1);
+\end{scope}
+
+\begin{scope}[blue]
+\draw [line width = 0.75pt,->] (sj1) to [bend right = 20](apj1);
+\draw [line width = 3pt, dash pattern = on 0pt off 12 pt, line cap=round](apj1) to [bend left =30] (avi1);
+\draw [line width = 0.75pt,->] (avi1) to [bend right = 20](spmui1);
+\draw [line width = 0.75pt,->] (spmui1) to [bend left = 20] node[auto,sloped]{$\sigma\circ\tau$}(sj1);
+\end{scope}
+
+\end{tikzpicture}
