@@ -18,7 +18,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[pdftex]{hyperref} %pour les liens ds le poly
 \usepackage{framed}%pour faire les bares de preuves
-\usepackage{amsfonts, amsmath, amssymb, ragged2e, mathtools, fancybox, moresize, mathrsfs, geometry, upgreek, stmaryrd, fancyhdr, lastpage, extarrows, halloweenmath, calrsfs, mathabx, mathbbol}
+
 
 \renewenvironment{leftbar}{%
   \def\FrameCommand{\vrule width 0.4pt \hspace{10pt}}%
@@ -121,8 +121,6 @@
 \newcommand{\mc}{\mathcal}
 \newcommand{\D}{\right}
 \newcommand{\G}{\left}
-\newcommand{\jus}{\ju\vspace{0.5cm}}
-\newcommand{\ju}{\justify}
 
 \newcommand{\fonctions}[5]{\begin{displaymath}#1:\left| \begin{array}{ccc}
  #2 & \longrightarrow & #3 \\
@@ -1099,7 +1097,7 @@ Comme précédemment
 \end{enumerate}
 \end{preuve}
 \section{Action de groupes}
-\ju
+\par
 \begin{definition}[Action] Soit $G$ un groupe et $X$ un ensemble non vide. Une opération de $G$ sur un ensemble $X$ est une application $G\times X\longrightarrow  X,\ (g,x)\mapsto  g\cdot x$
 qui vérifie
 \begin{itemize}
@@ -1107,33 +1105,33 @@ qui vérifie
 \item $e\cdot x=x,\ \forall x\in X$
 \end{itemize}
 \end{definition}
-\ju 
+\par
 \remarque{On a défini ici une action de $G$ à gauche. On peut définir une action de $G$ à droite en demandant cette fois ci : $(x\cdot g_1)\cdot g_2=x\cdot (g_1g_2)$}
-\jus
+\par
 \begin{prop}
 \begin{itemize}
 \item $\forall g\in G$, l'application $\gamma_g:X\longrightarrow  X,\ x\mapsto  g\cdot x$ est une bijection (d'inverse $\gamma_{g^{-1}}$)
 \item L'application $G\longrightarrow \text{Bij}(X),\ x\mapsto  \gamma_x$ est un morphisme de groupes. Réciproquement, tout morphisme de groupes $\lambda:G\longrightarrow  \text{Bij}(X)$ définit une action de $G$ sur $X$ en posant $g\cdot x=(\lambda(g))(x)$.
 \end{itemize}
 \end{prop}
-\jus
+\par
 \remarque{On étudira le cas particulier où $X=G$, il s'agit d'un cas très intéressant. On peut avoir $G\longrightarrow \text{Bij}(G)$ et même des exercices où $G\longrightarrow \text{Aut}(G)$.}
-\jus 
+\par
 \begin{exemple}
 \begin{itemize}
 \item[1)] $G$ opère sur $G$ par translation à gauche $G\times G,\ (g,x)\longrightarrow  g\cdot x=gx$. 
 \item[2)] $G$ opère sur $G$ par conjugaison  $G\times G\longrightarrow  G,\ (g,x)\mapsto  g\cdot x=gxg^{-1}$. Ici, l'application $G\longrightarrow  G,\ x\mapsto  gxg^{-1}$ est un automorphisme de $G$. Donc on a ici $G\longrightarrow  \text{Aut}(G)$. 
 \end{itemize}
 \end{exemple}
-\jus 
+\par
 \begin{definition}[automorphisme intérieur] 
 L'application $i_g:G\longrightarrow  G,\ x\mapsto  gxg^{-1}$ s'appelle l'automorphisme intérieur associé à $g$. 
 \end{definition}
-\jus 
+\par
 Exercice. L'ensemble $\text{Int}(G)$ des automorphismes intérieurs de $G$ forme un sous-groupe de $\text{Aut})(G)$. 
-\jus 
+\par
 Lemme. $\text{Int}(G)\simeq G/Z(G)$
-\ju 
+\par
 \begin{preuve}
 On considère le morphisme 
 \fonctions{\varphi}{G}{\text{Int}(G)}{g}{i_g}
@@ -1163,28 +1161,28 @@ Cette application est bien définie. En effet, si $gH=xH$ alors $y=xh$ où $k\in
 \fonctions{h}{\text{GL}_n(\R)\times S_n(\R)}{\mathbb{S}^n}{(g,x)}{g^{\top}xg}
 \end{itemize} 
 \end{exemple}
-\jus 
+\par
 \subsection{Stabilisateur, orbite}
-\jus 
+\par
 \begin{definition}[stabilisateur] 
 Soit $x\in X$. Le stabilisateur de $x$ dans $G$ est 
 $$\text{Stab}_G(x):=\{g\in G,\ g\cdot x=x\}.$$
 \end{definition}
-\ju 
+\par
 Exercice. $\text{Stab}_G(x)<G$. 
-\jus 
+\par
 Maintenant, introduisons la relation sur $X$ suivante : 
 $$x\mc{R}y\ssi\exists g\in G,\ y=g\cdot x.$$
-\ju 
+\par
 Exercice. $\mc{R}$ est une relation d'équivalence. 
-\ju 
+\par
 \begin{definition}[] 
 Soit $x\in X$. $\text{Orb}_G(x)$ est la classe d'équivalence de $x$ par la relation $\mc{R}$. Autrement dit : 
 $$\text{Orb}_G(x)=\{g\cdot x,\ g\in G\}$$
 \end{definition}
-\ju 
+\par
 Retour sur les 7 exemples. 
-\ju 
+\par
 \begin{itemize}
 \item[1)] $\text{Stab}_G(x)=\{x\}n\ \text{Orb}_G(x)=G$. 
 \item[2)] $\text{Stab}_G(x)=\{g\in G,\ gxg^{-1}=x\}=\{g\in G,\ gx=xg\}$, appelé le "centraliseur" de $x$, noté $C_G(x)$. 
@@ -1201,25 +1199,25 @@ $$\text{Orb}_G(i):=\mathbb{H}.$$
 $$\text{Stab}_G(M)=\{\text{groupes des isométries par la forme quadratique induite par }M\}$$
 $$\text{Orb}_G(xH):=\{M^{\top}\in S_n(\R),\ \text{signature}(M)=\text{signature}(M')\}$$
 \end{itemize} 
-\jus 
+\par
 Fait important : Si $y\in\text{Orb}_G(x)$ alors on peut relier $\text{Stab}_G(x)$ et $\text{Orb}_G(y)$. On a 
 $$\text{Stab}_G(x)=g\text{Stab}_G(x)g^{-1}.$$
 Autre propriété importante :
-\ju 
+\par
 \begin{theoreme}
 Soit $x\in X$. L’application 
 \fonctions{V}{(G/\text{Stab}_G(x))_{\text{gauche}}}{\text{Orb}_G(x)}{g\text{Stab}_G(x)}{g\cdot x}
 est bien définie et c’est une bijection. Attention, $V$ n’est pas un morphisme de groupes. 
 \end{theoreme}
-\jus 
+\par
 \begin{preuve}
 Soit $S:=\text{Stab}_G(x)$. Soit $(g,g')\in G^2$ tel que $g'S=Sg$. Alors $g'=gS$ où $s\in S$. Ainsi, $g'\cdot x=(gS)\cdot x=g\cdot (x\cdot s)=g\cdot x$.
-\ju 
+\par
 $V$ est surjective par définition. 
-\ju 
+\par
 $V$ est injective : : Soit $(g,g')\in G^2$ tel que $g\cdot x=g'\cdot x$. On a $(g')^{-1}\cdot (g\cdot x)=x$. Or $(g')^{-1}\cdot (g\cdot x)=((g')^{-1}g)\cdot x$, donc $(g')^{-1}g\in S$, donc $g\in g'S$, donc $gS=g'S$.  
 \end{preuve}
-\ju 
+\par
 \begin{theoreme}
 \begin{itemize}
 \item[1)] $\forall x\in X,\ \G|\text{Orb}_G(x)\D|=\frac{|G|}{|\text{Stab}_G(x)|}=[G:\text{Stab}_G(x)]$. 
