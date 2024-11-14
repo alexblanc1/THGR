@@ -117,10 +117,14 @@
 \newcommand{\unn}{\{1, ..., n\}}
 \newcommand{\sign}{\epsilon(\sigma)}
 \newcommand{\dsp}{\displaystyle}
+\newcommand{\orb}{\text{Orb}}
+\newcommand{\stab}{\text{Stab}}
+
 
 \newcommand{\mc}{\mathcal}
 \newcommand{\D}{\right}
 \newcommand{\G}{\left}
+
 
 \newcommand{\fonctions}[5]{\begin{displaymath}#1:\left| \begin{array}{ccc}
  #2 & \longrightarrow & #3 \\
@@ -1096,7 +1100,9 @@ Comme précédemment
 
 \end{enumerate}
 \end{preuve}
-\section{Action de groupes}
+\chapter{Action de groupes}
+
+\section{Définition et exemples}
 \par
 \begin{definition}[Action] Soit $G$ un groupe et $X$ un ensemble non vide. Une opération de $G$ sur un ensemble $X$ est une application $G\times X\longrightarrow  X,\ (g,x)\mapsto  g\cdot x$
 qui vérifie
@@ -1162,7 +1168,7 @@ Cette application est bien définie. En effet, si $gH=xH$ alors $y=xh$ où $k\in
 \end{itemize} 
 \end{exemple}
 \par
-\subsection{Stabilisateur, orbite}
+\section{Stabilisateur, orbite}
 \par
 \begin{definition}[stabilisateur] 
 Soit $x\in X$. Le stabilisateur de $x$ dans $G$ est 
@@ -1218,12 +1224,88 @@ $V$ est surjective par définition.
 $V$ est injective : : Soit $(g,g')\in G^2$ tel que $g\cdot x=g'\cdot x$. On a $(g')^{-1}\cdot (g\cdot x)=x$. Or $(g')^{-1}\cdot (g\cdot x)=((g')^{-1}g)\cdot x$, donc $(g')^{-1}g\in S$, donc $g\in g'S$, donc $gS=g'S$.  
 \end{preuve}
 \par
-\begin{theoreme}
+\begin{corollaire} Si G est un groupe fini
 \begin{itemize}
 \item[1)] $\forall x\in X,\ \G|\text{Orb}_G(x)\D|=\frac{|G|}{|\text{Stab}_G(x)|}=[G:\text{Stab}_G(x)]$. 
 \item[2)] Si $X$ est fini et si $\{x_1,\cdots,x_r\}$ est un ensemble de représentants des orbites par la relation $\mc{R}$, alors 
 $$|X|=\sum_{i=1}^{r}|\text{Orb}_G(x_i)|= \sum_{i=1}^{r}\frac{|G|}{|\text{Stab}_G(x_i)|}.$$
 \end{itemize}
+\end{corollaire}
+
+\section{Action d'un groupe G sur lui même par conjugaison}
+
+On rappel que l'action de G par conjugaison sur lui même est défini par :\par
+\begin{center}$
+\fonction{\varphi}{G\times G}{G}{(g,x)}{gxg^{-1}}$
+\end{center}
+On défini alors :
+\begin{itemize}
+\item $\dsp \orb_G(x) = \{ gxg^{-1},~ g\in G \}$ appelé classe de conjugaison.
+ \item $\dsp C_{G}(x):=\stab_G(x) = \{g\in G, gxg^{-1}=x\}$ appelé centralisateur de x
+\end{itemize}
+
+\remarque{$\orb(e) = \{ e\}$} ainsi $\{e\}$ est toujours une classe de conjugaison de cardinal 1.
+
+\begin{lemme}\par
+Soit $x\in G$, $|\orb_{G}(x)|=1 \Longleftrightarrow x\in Z(G)$
+\end{lemme}
+
+Dans ce contexte l'équation aux classes devient :
+\begin{center}
+\begin{align*}
+\begin{split}
+|G| &= \sum_{i=1}^{r} |\orb_{G}(x_{i})| \\
+    &= |Z(G)| + \sum_{\substack{i=1 \\ |\orb_G(x_i)| \geq 2}
+}^{r} |\orb_{G}(x_{i})|
+\end{split}
+\end{align*}
+\end{center}%
+
+
+\begin{corollaire}
+Soit G un groupe fini d'ordre $p^{\alpha}$ ou p est un nombre premier et $\alpha >= 1$. $Z(G)$ n'est pas réduit à $\{e\}$
+\end{corollaire}
+
+\begin{preuve}
+ Déjà remarquons que$|Z(G)| = \sum_{\i=1  |\orb_{G}(x_{i})|>= 2}^{r} - |\orb_{G}(x_{i})|$. Ensuite il suffit de monter que que  si $|\orb_{G}(x_{i})|>= 2$ alors $p|~~|\orb_{G}(x_{i})|$
+\end{preuve}
+
+\begin{corollaire}
+Tout groupe d'ordre $p^{2}$ est abélien
+\end{corollaire}
+
+\begin{preuve}
+Nous l'avons monter dans le TD n°3, ex 3.
+Dans l'idée : si $|Z(G)|=p^{2}$, on a finit. Si $|Z(G)|=p$ on obtient une contradiction en remarquant que $G/Z(G)$ est d'ordre p donc monogène et que donc G est abélien
+\end{preuve}
+On peut donc monter grâce à ce corollaire et le théorème de structure des groupes abélien fini que :
+\begin{itemize}
+\item Pour $p=2$, tout groupe G d'ordre 4 on à soit $G\simeq \Z/4\Z$ soit, $G \simeq \Z/2\Z \times \Z/2\Z$
+\item Pour $p=3$, tout groupe G d'ordre 9 on à soi $G\simeq \Z/9\Z$ soit $G \simeq \Z/3\Z \times \Z/3\Z$
+\end{itemize}
+
+\begin{theoreme}
+Si H est un sous groupe de G on à :\par
+En posant \( I(H) = \{ i\in \llbracket  1,r\rrbracket  \mid \orb_{G}(x_{i}) \cap H \neq \emptyset \} \)
+\begin{center}
+\[
+H \triangleleft G \Longleftrightarrow H = \bigcup_{\substack{i=1 \\ i \in I(H)}}^{r} \orb_{G}(x_{i})
+\]
+\end{center}
+Autrement dit :
+\begin{center}
+\[ H\triangleleft H \Longleftrightarrow H\text{est une union (disjointe) de classe de conjugaisons} \]
+\end{center}
 \end{theoreme}
+
+\begin{preuve}
+\fbox{$\Leftarrow$}\par 
+Il suffit de remarquer que les classes de conjugaison sont stables par conjugaison.\par 
+
+\fbox{$\Rightarrow$}\par
+Commençons par écrire  $\dsp H = \bigcup_{i=1}^{r}\orb_{G}(x_{i})\cap H$, ce qui découle immédiatement du fait que les orbites forment une partition de G. Il suffit alors de montrer que pour tout $i\in I(H)$ on à $\orb_{G}(x_{i})\subset H$.\par 
+Soit donc $i\in I(H)$ et $y\in \orb_{G}(x_{i})$ :\par 
+Par définition de $I(H)$ il existe $x\in H \cap \orb_{G}(x_{i})$. Et, x parcours tout $\orb_{G}(x_{i})$ sous l'action de notre action de groupe (conjugaison). IL suffit alors de se rappeler que H est normal et l'on obtient bien $\orb_{G}(x_{i})\subset H$.
+\end{preuve}
 
 \end{document}
