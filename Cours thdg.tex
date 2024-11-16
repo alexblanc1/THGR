@@ -1308,4 +1308,148 @@ Soit donc $i\in I(H)$ et $y\in \orb_{G}(x_{i})$ :\par
 Par définition de $I(H)$ il existe $x\in H \cap \orb_{G}(x_{i})$. Et, x parcours tout $\orb_{G}(x_{i})$ sous l'action de notre action de groupe (conjugaison). IL suffit alors de se rappeler que H est normal et l'on obtient bien $\orb_{G}(x_{i})\subset H$.
 \end{preuve}
 
+\section{Actions transitives, actions fidèles}
+
+\begin{definition} 
+Soit $G$ un groupe qui agit sur $X$. On dit que l'action de $G$ sur $X$ est transitive si :
+$$\forall x \in X, \forall y \in X, \exists g \in G, y = g\cdotx$$
+\end {definition} 
+
+Autrement dit, il n'y a qu'une seule orbite. On dit alors que $X$ est $G$-homogène.
+
+\begin{exemples}
+1) $G$ opère sur lui-même par translation transitivement.
+En effet, $\forall x,y \in G, y = (yxˆ{-1}) \cdot x$
+2) Si $G$ opère sur lui-même par conjugaison, on a l'équivalence : 
+l'action est transtive $\Leftrightarrow G$ est le groupe trivial (en effet, Orb$_G (1) = {1}$)
+3) L'action $\begin{cases}
+G \times (G/H)_g \rightarrow (G/H)_g \\
+(g, xH) \mapsto gxH
+\end{cases}$ est transitive.
+4)On considère l'action : $\begin{cases}
+\mathrm{SL}_2 (\mathbb{R}) \times \mathbb{H}  \rightarrow \mathbb{H}
+(\begin{pmatrix} 
+a & b \\
+c & d 
+\end{pmatrix}, z) \mapsto \frac{az + b}{cz + d}
+\end{cases}$
+Nous allons montrer qu'elle est transitive. Il suffit pour cela de montrer que Orb$_{\mathrm{SL}_2 (\mathbb{R})} (i) = \mathbb{H}$.
+Soit $z \in \mathbb{H}$. On écrit $z = x + iy$ où $y > 0, x \in \mathbb{R}$.
+On relie d'abord $z$ à $y$ par la translation $g' = \begin{pmatrix} 
+1 & -x \\
+0 & 1 
+\end{pmatrix} \in \mathrm{SL}_2 (\mathbb{R})$. On relie ensuite $y$ à $i$ par une homothétie bien choisie. Pour que celle-ci soit dans $\mathrm{SL}_2 (\mathbb{R})$, on ajuste les coefficients diagonaux de la manière suivante :
+$g'' = \begin{pmatrix} 
+1/\sqrt{y} & 0 \\
+0 & \sqrt{y}
+\end{pmatrix}$
+Enfin, en composant ces deux opérations, on obtient que pour $g = g'' g' \in \mathrm{SL}_2 (\mathbb{R})$, $g\cdot z = i$.
+
+5) L'action de O$_n (\mathbb{R})$ sur $Sˆ{n-1}$ est transitive. 
+6) Le groupe diédral d'ordre $2n$ $D_n$ agit transitivement sur les sommets du polygône régulier à $n$ côtés.
+7) L'action $\begin{cases}
+\mathrm{GL}_n (\mathbb{R}) \times S_nˆ{++}(\mathbb{R}) \rightarrow S_nˆ{++}(\mathbb{R})
+(P, M) \mapsto \transp{P} M P
+\end{cases}$ est transitive : c'est le théorème de réduction de Sylvester. 
+\end{exemples}
+
+\begin{definition}
+Soit $G$ un groupe agissant sur $X$. 
+On dit que l'action de $G$ sur $X$ est fidèle si le morphisme correspondant : 
+$$\gamma : \begin{cases}
+G \rightarrow \mathcal{S}_X
+g \mapsto (x \mapsto g \cdot x) 
+\end{cases} $$
+est injectif.
+\end{definition}
+
+\underline{Rq :} Il revient au même de demander : $\forall g \in G, (\forall x \in X, g \cdot x = x \Rightarrow g = 1$
+
+\begin{exemples}
+1) L'action de translation à gauche d'un groupe sur lui-même est fidèle.
+En effet, si $g \in \mathrm{ker} \gamma$, alors $\forall x \in G, g \cdot x = x$ donc $g = g \cdot e = e$.
+
+2) L'action par conjugaison fournit le noyau d'action : $\mathrm{ker} \gamma = \mathrm{Z} (G)$ 
+
+3) \mathrm{SL}_2 (\mathbb{R}) n'agit pas fidèlement sur $\mathbb{H}$. En effet, si $\begin{pmatrix} 
+a & b \\
+c & d 
+\end{pmatrix} \in \mathrm{SL}_2 (\mathbb{R})$, alors : 
+$$\begin{pmatrix} 
+a & b \\
+c & d 
+\end{pmatrix} \in \mathrm{ker} \gamma \Leftrightarrow \forall z \in \mathbb{H}, \frac{az + b}{cz + d} = z \\
+\Leftrightarrow \forall z \in \mathbb{H}, czˆ2 + (d-a)z - b = 0 \Leftrightarrow \begin{cases} 
+c = b = 0 \\
+a = d = \pm 1
+\end{cases}$$
+\end{exemples}
+
+\underline{Rq :} On peut toujours se ramener à une action fidèle quitte à quotienter $G$ par le noyau de l'action. 
+
+\chapter{Produit semi-direct}
+\subsection{Produit semi-direct interne}
+\underline{Rappel :} $G_1, G_2$ deux groupes.
+$G_1 \times G_2$ est un groupe pour la loi $(g_1, g_2) \cdot (g_1', g_2') = (g_1 g_1', g_2 g_2')$ 
+
+\begin{theoreme}
+Un groupe $G$ est isomorphe au produit direct $G_1 \times G_2$ si et seulement si on peut trouver $H_1, H_2$ deux sous-groupes de $G$ vérifiant: 
+$$- H_i est isomorphe à G_i \\
+- H_1, H_2 commutent
+- H_1 H_2 = G
+- H_1 \cap H_2 \mathrm{est \; trivial}
+$$
+\end{theoreme} 
+
+\underline{Application (TD):} $(\mathbb{Z}/{2ˆ{\alpha}\mathbb{Z}})ˆ* \simeq \mathbb{Z}/{2ˆ{\alpha - 2}\mathbb{Z}} \times \mathbb{Z} / {2 \mathbb{Z}}$
+
+\begin{definition}[produit semi-direct interne]
+Soit $G$ un groupe et $N, H$ deux sous-groupes de $G$.
+On dit que $G$ est produit semi-direct interne de $N$ par $H$ si : 
+$$i) N \triangleleft G \\
+ii) G = N H
+iii) N \cap H \mathrm{est \; trivial}
+$$
+\end{definition}
+
+\begin{exemple}
+Dans $S_n$, pour $N = \mathcal{A}_n, H = \{ \mathrm{Id}, \tau \}$ où $\tau$ est une transposition quelconque, on voit directement (cf chapitre sur le groupe symétrique) que $S_n$ est p.s.d.i de $N$ par $H$.
+\end{exemple}
+
+\underline{Rq :} On dit alors que $H$ est un complément de $N$ dans $G$. (il n'est en général pas unique : c'est l'analogue des supplémentaires en algèbre linéaire) \\
+Par ailleurs, un sous-groupe distingué $N$ n'admet pas nécessairement de complément.
+
+\underline{Rq :} Supposons $i), ii)$ et $iii)$ vérifiés pour $N, H$ et $G$.
+Soient $n_1 h_1, n_2 h_2 \in G$. Alors : 
+
+$$n_1h_1n_2h_2 = \underbrace{n_1 h_1 n_2 h_1ˆ{-1}}{\in N} \underbrace{h_1 h_2}{\in H}$$
+
+C'est la décomposition $"NH"$ du produit $n_1h_1n_2h_2$. Cela implique qu'on introduit une nouvelle opération dans $G$, donnée par : 
+$$(n_1,h_1) \cdot (n_2,h_2) = (n_1 h_1 n_2 h_1ˆ{-1}, h_1h_2) $$
+
+\begin{exemple}[Groupe diédral]
+$D_n = \{ \underbrace{\mathrm{Id}, r, \dots, rˆ{n_1}}{rotations}, \underbrace{s, \dots, srˆ{n_1}}{symétries} \}$
+On note $N$ le sous-groupe normal engendré par $r$, et on pose $H = \{ \mathrm{Id}, s \}.
+Alors $D_n$ est p.s.d.i de $N$ par $H$.
+\end{exemple}
+
+\subsection{Produit semi-direct externe}
+Soient $N, H$ deux groupes. Soit $\phi : H \rightarrow \mathrm{Aut}(N)$ un morphisme.
+L'action correspondante à $\phi$ est :
+
+$$ \begin{cases}
+H \times N \rightarrow N \\
+(h, x) \mapsto \phi(h)(x) =: \phi_h(x)
+\end{cases}$$
+
+\begin{prop} L'ensemble $N \times H$ munit de la loi $(x, h) \cdot_{\phi} (y, k) = (x \phi_h(y), hk)$ est un groupe, appelé le produit semi-direct externe de $N$ par $H$ relativement à $\phi$.
+On le note $N \rtimes_{\phi} H$.
+\end{prop}
+
+
+\begin{preuve} Il faut vérifier l'associativité, l'existence d'un élèment neutre (qui se trouve être $(1_N, 1_H)$ et l'existence d'un inverse pour chaque élèment : $(x, h)ˆ{-1} = (\phi_{hˆ{-1}} (xˆ{-1}), hˆ{-1})
+\end{preuve}
+
+
+
 \end{document}
