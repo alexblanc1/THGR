@@ -1427,6 +1427,11 @@ $$n_1h_1n_2h_2 = \underbrace{n_1 h_1 n_2 h_1ˆ{-1}}{\in N} \underbrace{h_1 h_2}{
 C'est la décomposition $"NH"$ du produit $n_1h_1n_2h_2$. Cela implique qu'on introduit une nouvelle opération dans $G$, donnée par : 
 $$(n_1,h_1) \cdot (n_2,h_2) = (n_1 h_1 n_2 h_1ˆ{-1}, h_1h_2) $$
 
+Ainsi, $N \times H$ muni de la loi $(x_1, h_1) \cdot (x_2, y_2) := (x_1 h_1 x_2 h_1 ^{-1},h_1 h_2)$ est isomorphe à $(G,\cdot)$\\
+
+Cela montre que $G$ est iso au produit semi-direct externe de $N$ par $H$ ($N$ et $H$ n'étant maintenant plus unis comme sous-groupe de $G$, mais comme groupe "abstraits") où :
+$$\fonction{\phi}{H}{\mathrm{Aut}(N)}{h}{\fonction{\phi_{h}}{N}{N}{x}{hxh^{-1}}}$$
+
 \begin{exemple}[Groupe diédral]
 $D_n = \{ \underbrace{\mathrm{Id}, r, \dots, rˆ{n_1}}{rotations}, \underbrace{s, \dots, srˆ{n_1}}{symétries} \}$
 On note $N$ le sous-groupe normal engendré par $r$, et on pose $H = \{ \mathrm{Id}, s \}.
@@ -1450,6 +1455,100 @@ On le note $N \rtimes_{\phi} H$.
 \begin{preuve} Il faut vérifier l'associativité, l'existence d'un élèment neutre (qui se trouve être $(1_N, 1_H)$ et l'existence d'un inverse pour chaque élèment : $(x, h)ˆ{-1} = (\phi_{hˆ{-1}} (xˆ{-1}), hˆ{-1})
 \end{preuve}
 
+\begin{prop}
+    Soit $G$ le produit semi-direct externe de $N$ par $H$, relatif à $\fctsarg{\phi}{H}{\textrm{Aut}(N)}$. On a donc : $G = N\rtimes_{\phi} H$.On note $\ast_{\phi}$ la loi de groupe.\\
+    
+    Soit $\fonction{I_N}{N}{G}{x}{(x,e_H)}$,\\
+    $\fonction{I_H}{H}{G}{h}{(e_N,h)}$\\
 
+    Soit $N' = \text{Im}(I_N)$, c'est un sous-groupe de $G$ iso à $N$, et $H' = \text{Im}(I_H)$, c'est un sous-rgoupe de $G$ iso à $H$.\\
+
+    Alors $G$ est produit semi-direct interne de $N'$ par $H'$. De plus, 
+    $I_N(\phi_h(x)) = I_H(h) \ast\phi I_N(x) \ast_{\phi} (I_H(h))^{-1}$
+\end{prop}
+
+\remarque{}
+Si on note avec les images de $I_N$ et $I_H$ (les réalisations $N'$ de $N$ dans $G$, et $H'$ de $H$ dans $G$)\\
+$(\phi_h(x))' = h' \ast_{\phi} x' \ast_{\phi} (h')^{-1}$\\
+
+Ainsi, l'action du morphisme $\phi$ est celle de la conjugaison quitte à employer la loi $\ast_{\phi}$ pour le groupe $G = N \times H$.
+
+\begin{preuve}
+    On veut mq $G$ est p.s.d.i. de $N'$ par $H'$.
+    \begin{enumerate}
+        \item $N'\triangleleft G$
+        \item $G = N'H'$
+        \item $N' \cap H'  = \{e\}$
+    \end{enumerate}
+    $N' = \{(x,e_H), x \in N \}$ et $H' = \{(e_N,h), h \in H \}$, on a donc : $N' \cap H'  = \{e_G \}$\\
+
+    Soit $(x,h) \in G$\\
+    \\
+    Alors $(x,h) = (x,e_H) \ast_{\phi} (e_N,h)$ (exercice)\\
+
+    Soit $(x,e_H) \in N'$ et soit $(y,k) \in G$\\
+    $(y,k) \ast_{\phi} (x,e_H) \ast_{\phi} (y,k)^{-1} = \\
+    \\
+    (y,k) \ast_{\phi} (x,e_H) \ast_{\phi} (\phi_{k^{-1}}(y^{-1},k^{-1}) = \\
+    \\
+    (y,k) \ast_{\phi} (x \phi_{e_H}(\phi_{k^{-1}}(y^{-1}),k^{-1}) = \\
+    \\
+    (y,k) \ast_{\phi} (x \phi_{k^{-1}}(y^{-1}),k^{-1}) = \\
+    \\
+    (y\phi_k(x\phi_{k^{-1}}(y^{-1})),kk^{-1}) = \\
+    \\
+    (y\phi_k(x)\phi_k(\phi_{k^{-1}}(y^{-1})),e_H) = \\ \\
+    (y\phi_k(x)y^{-1},e_H) \in N'$\\
+
+    On note $x' := (x,e_H) \in N'$\\
+            $h' := (e_N,h) \in H'$\\
+    On a : $x' \ast_{\phi} h' = (x,h) \in G$ (exercice !)\\
+
+    $x_1' \ast_{\phi} h_1' \ast_{\phi} x_2' \ast_{\phi} h_2' = (x_1, h_1) \ast_{\phi} (x_2, h_2) = (x_1 \phi_{h_1}(x_2),h_1 h_2) = (x_1 \phi_{h_1}(x_2))' \ast_{\phi} (h_1 h_2)'$\\
+
+    On obtient deux décompositions $"N,H"$, on identifie les coordonnées : 
+
+    $\begin{cases}
+        x_1' \ast_{\phi} h_1' \ast_{\phi} x_2' \ast_{\phi} (h_1 ')^{-1} = (x_1 \ast_N \phi_{h_1}(x_2))'\\
+        h_1' \ast_{\phi} h_2' = (h_1 \ast_H h_2)'
+    \end{cases}$
+
+    En faisant $x_1 = e_N$, on obtient avec la première ligne :
+    $h_1' \ast_{\phi} x_2' \ast_{\phi} (h_1')^{-1} = (\phi_{h_1}(x_2))'$
+\end{preuve}
+
+On reviendra sur la notion de p.s.d après la preuve du théorème de Sylow. En effet, on montrera le théorème suivant : classification des groupes d'ordre $pq$ où $p$ et $q$ sont premiers,\\
+ou bien $p \nmid q-1$, dans ce cas $G \simeq \Z / pq\Z$,\\
+ou bien $p$ divise $q-1$, dans ce cas $G \simeq \Z / pq\Z$ ou $G \simeq \Z / q\Z \rtimes \Z / p\Z$.
+
+
+
+
+\chapter{Théorèmes de Sylow}
+
+\begin{definition}
+    Soit $G$ un groupe d'ordre $p^{\alpha}m$ où $p$ est premier, $\alpha \geq 1, m \in \N^*, \text{pgcd}(p,m) = 1$.\\
+    Un $p$-Sylow de $G$ est un sous-groupe d'ordre $p^{\alpha}$.
+\end{definition}
+
+\begin{theoreme}
+    \begin{enumerate}
+        \item $G$ possède au moins un $p$-Sylow
+        \item Si $H$ $p$-sous-groupe de $G$ (il existe $\beta \in \{1,..., \alpha\}$ tel que $|H| = p^{\beta}$), alors il existe un $p$-Sylow $S$ (de $G$) tel que $H \subseteq S$
+        \item Les $p$-Sylow sont conjugués : si $S_1, S_2$ sont deux $p$-Sylow, il existe $g \in G, S_2 = gS_1 g^{-1}$.
+        \item Soit $s_p$ le nombre de $p$-Sylow. On a : $s_p \mid n$ où $(n = |G|)$
+        \item $s_p = 1$ mod $p$, en particulier (d'après 4), on a $s_p \mid m$.
+    \end{enumerate}
+\end{theoreme}
+
+\begin{preuve}
+    \underline{Plan de 1.}
+    \begin{enumerate}
+        \item Soit $|G| = p^{\alpha}m =: n$ Alors $G$ se plonge dans $GL_n(\Z / p\Z)$
+        \item Posons $K = GL_n(\Z / p\Z).$ Alors $K$ possède un $p$-Sylow $\Sigma$, $|K| = p^{\gamma}l, \text{pgcd}(p,l) = 1$
+    \item \underline{Lemme:} Soit $K$ un groupe, $|K| = p^{\gamma}l$, $\text{pgcd}(p,l) = 1$.\\
+    Soit $G'$ sous-groupe de $K$ et soit $\Sigma$ un $p$-Sylow de $K$. Alors il existe $k \in K$ tel que $k \Sigma k^{-1} \cap G'$ est un $p$-Sylow de $G'$.
+    \end{enumerate}
+\end{preuve}
 
 \end{document}
