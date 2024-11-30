@@ -1549,6 +1549,206 @@ ou bien $p$ divise $q-1$, dans ce cas $G \simeq \Z / pq\Z$ ou $G \simeq \Z / q\Z
     \item \underline{Lemme:} Soit $K$ un groupe, $|K| = p^{\gamma}l$, $\text{pgcd}(p,l) = 1$.\\
     Soit $G'$ sous-groupe de $K$ et soit $\Sigma$ un $p$-Sylow de $K$. Alors il existe $k \in K$ tel que $k \Sigma k^{-1} \cap G'$ est un $p$-Sylow de $G'$.
     \end{enumerate}
-\end{preuve}
 
+    \textbf{1) $G$ possède un $p$-sylow}. 
+    
+    \bigbreak
+        
+        (i) Soit $G \overset{\text{Cayley}}{\hookrightarrow} \mathbb{S}_n \overset{\phi}{\hookrightarrow} GL_n \left( \Z / p\Z \right) $ tel que $\phi (\sigma)=Mat(u_\sigma)$. Considérons $(e_1, ...e_n) $ la base canonique de $\left( \Z / p\Z \right) ^n$, soit $\sigma \in \mathbb{S}_n$, on pose : 
+        
+        \begin{center}
+            $u_\sigma = \left\{
+            \begin{array}{ll}
+                \left( \Z /p\Z \right) ^n \longrightarrow \left( \Z /p\Z \right) ^n& \\
+                u_\sigma (e_i)=e_{\sigma(i)}& 
+            \end{array}
+        \right.$
+        \end{center}
+        
+        \begin{exo}
+            Montrer que $\phi$ est un morphisme injectif. 
+        \end{exo}
+    
+        (ii) $GL_n\left( \Z /p\Z \right) $ possède un $p$-sylow : 
+        
+        \begin{enumerate}
+            
+            \item \textbf{Cardinal de $GL_n\left( \Z /p\Z \right) $ : }
+            
+            \newline Pour cela, on énumère les bases de $\left( \Z /p\Z \right) ^n$ : 
+            
+            \begin{itemize}
+                \item [$\bullet$]Il y a $p^n-1$ possibilités pour le 1er vecteur $\vec{u_1}.$
+                \item [$\bullet$] Il y a $p^n-p$ possibilités pour le 2nd vecteur $\vec{u_2}$. En effet, $\vec{u_2} \in  \left ( \Z / p\Z \right)^n \textbackslash \text{Vect}(\vec{u_1})$. Or $\text{Vect}(\vec{u_1})$ est isomorphe à $ \left ( \Z / p\Z \right)$ donc de cardinal $p$. \\ \vdots
+                \item [$\bullet$] Il y a $p^n-p^{n-1}$ possibilités pour le $n$-ème vecteur $\vec{u_n}.$ En effet, $\vec{u_2} \in  \left ( \Z / p\Z \right)^n \textbackslash \text{Vect}(\vec{u_1}, \dots, \vec{u}_{n-1})$ et $\text{Vect}(\vec{u_1}) \simeq \left ( \Z / p\Z \right)^{n-1}$ donc de cardinal $p^{n-1}$.
+            \end{itemize}
+            
+            Ainsi : \newline $| GL_n\left( \Z / p\Z \right)| = (p^n-1)(p^n-p) \dots (p^n-p^{n-1}) = (p^n-1)(p^{n-1}-1) p \times \dots \times (p-1)p^{n-1}$. \bigbreak Autrement dit,  \newline $| GL_n\left ( \Z / p\Z \right)  = (p^n-1) \dots (p-1)\times (1\times p \times \dots \times p^{n-1}) = (p^n-1) \dots (p-1)\times p^{\tfrac{n(n-1)}{2}} $
+            \newline avec $v:=(p^n-1) \dots (p-1)$ non divisible par $p$. Un $p$-sylow de $GL_n\left( \Z /p\Z \right)$ est donc d'ordre $p^{\tfrac{n(n-1)}{2}}$. \bigbreak
+            
+            \item \textbf{Exhibons un sous-groupe de $GL_n(\Z / p\Z)$ d'ordre $p^{}\tfrac{n(n-1)}{2}$.} \bigbreak
+            
+            Notons $H = \Bigg \{
+            
+            \begin{pmatrix}
+                1 & * & \dots& *\\  
+                0 & \ddots & \ddots& \vdots\\
+                \vdots & \ddots & \ddots& *   \\
+                0 & \dots & 0& 1
+            \end{pmatrix}
+            
+            ~~~\Bigg |~~~~*\in \Z / p\Z~~ \Bigg \} <GL_n\left(\Z / p\Z \right)$. On a alors $|H| = p^{\tfrac{n(n-1)}{2}}$
+            
+            \bigbreak Ainsi, $H$ est un $p$-sylow de $GL_n(\Z / p\Z) .$
+            
+            \begin{lemme}{}
+                Soit $K$ un groupe tel que $|K| = p^\alpha l$. Soit $G'<K$ et soit $\Sigma $ un $p$-sylow. Alors il existe $k\in K$ tel que $k\Sigma k^{-1}\cap G'$ soit un $p$-sylow de $G'$.
+            \end{lemme}
+            
+            
+            \item Une fois ce lemme établi, on aura démontré le $1)$ du théorème de Sylow, avec 
+            
+            \begin{center}
+                $s:=\left( \phi \circ \text{Cayley}\right)^{-1}\left( G' \cap k \Sigma k^{-1}\right)$.
+            \end{center} 
+            
+            \begin{preuve}
+                On s'intéresse à l'action $\fonction{}{K\times K/\Sigma}{K/\Sigma}{(g,k\Sigma)}{gk\Sigma}$
+            \end{preuve}
+            
+            On restreint cette action à $G'~~~~\fonction{}{G'\times K/\Sigma}{K/\Sigma}{(g, k\Sigma)}{gk\Sigma}$
+            
+            \bigbreak
+            
+            On obtient alors : $Stab_K(k\Sigma)=k\Sigma k^{-1}$ et $Stab_{G'}(k\Sigma)=(k\Sigma k^{-1})\cap G'$. 
+            
+            \newline 
+            
+            On souhaite vérifier qu'il existe $k \in K$ tel que $Stab_{G'}(k\Sigma)$ est un $p$-sylow de $G'$. 
+            
+            \bigbreak On note $|G'|=p^{\beta_0 }r$. On veut donc montrer qu'il existe $k\in K$ tel que :
+            
+            \begin{center}
+                 $|k\Sigma k^{-1}\cap G'|=p^{\beta _ 0}$.
+            \end{center}
+            
+            Autrement dit, il existe $k \in K$ tel que $~~~\frac{|G'|}{|Stab_{G'}(k\Sigma)|}~~$ n'est pas divisible par $p.$
+            
+            \newline 
+            
+            On applique l'équation aux classes : on note $k_1 \Sigma , \dots , k_N\Sigma$ les représentants des orbites de l'action de $G'$ sur $K/ \Sigma $. On alors :
+            
+            \begin{center}
+                $|K/\Sigma |= \displaystyle \sum _{i=1}^N|Orb_{G'}(k_i\Sigma )|$
+            \end{center}
+           
+            car $|K/\Sigma | = \frac{|K|}{|\Sigma|}=\frac{p^\alpha l}{p^\alpha} = l$ non divisible par $p$. (en effet, si pour tout $i$ $|Orb_{G'}(k_i\Sigma)|$ est divisible par $p$, alors $|K/Z|$ le serait aussi, ce qui est impossible)
+           
+            \newline 
+           
+            Ainsi, il existe $i$ tel que $|Orb_{G'}(k_i\Sigma)| = \frac{|G'|}{|Stab_{G'}(k\Sigma)|} $ est non divisible par $p$ qui était le résultat voulu pour conclure. 
+    
+        \end{enumerate}
+        
+        
+        \textbf{2)} Soit $H <G$ un $p-$groupe tel que $|H| = p^\beta $ où $\beta \in \{1, \dots , \alpha \}$. Alors il existe un $p$-sylow de $G$ tel que $H <S$.
+        
+        \begin{preuve}
+            Soit $S'$ un $p$-sylow de $G$. On applique le lemme avec $ K =G, ~~ G' = H, ~~\Sigma =S'$. Il existe $g\in G$ tel que $gS'g^{-1}\cap H$ est un $p$-sylow de $H$. Comme $H$ est un $p$-groupe, $H$ un $p$-sylow de $H$ coïncide avec $K$, d'où $K \subset gS'g^{-1}$. 
+            On pose alors $S =  gS'g^{-1} :$ c'est un $p$-sylow de $G$ contenant $H$, d'où le résultat.
+        \end{preuve}    
+        
+        
+        \textbf{3)}
+        
+        \begin{lemme}{}
+            Deux $p$-sylow $S,S'$ sont conjugués : il existe $g\in G$ tel que $S'=gS'g^{-1}$
+        \end{lemme}
+        
+        \begin{preuve}
+            On reprend la preuve de 2) avec $H=S$. $H\subset gS'g^{-1}$ devient $S \subset gS'g^{-1}$. Comme $|S'| = |gS'g^{-1}|=|S'|$, on a $S=gS'g^{-1}$
+        \end{preuve}
+    
+        \begin{corollaire}{de 3)}
+            Soit $G$ un groupe tel que $|G| = p^\alpha m$. Soit $S$ un $p$-sylow de $G$. Alors  :
+            \begin{center}
+                $S\triangleleft G \Longleftrightarrow S $ est l'unique $p$-sylow de $G$
+            \end{center}
+        \end{corollaire}
+        
+        
+        \begin{preuve}
+            \begin{center}
+                $S\triangleleft G \Longleftrightarrow \forall g\in G , gSg^{-1}=S \Longleftrightarrow \forall S' $ $p$-sylow de $G$, $S = S'$
+            \end{center}
+        
+            Tout cela nous  donne finalement que : 
+        
+            \begin{center}
+                $S \triangleleft G \Longleftrightarrow S $ est l'unique $p$-sylow de $G$
+            \end{center}
+        \end{preuve}
+        
+        \bigbreak
+        
+        \begin{lemme}{}
+            Soit $s_p$ le nombre de $p$-sylow de $G$. Alors $s_p ~|~n$ avec $n=p^\alpha m$.
+        \end{lemme}
+        
+        \bigbreak
+        
+        5) On a de plus que $s_p \equiv 1 ~[p]$ et $s_p~|~m$ 
+    
+        \begin{preuve}{du 4)}
+            On pose $X:=\{p-\text{sylow de } G\}$ et considère l'action : 
+         
+            \begin{center}
+                $\fonction{}{G \times X}{X}{(g,S)}{gSg^{-1}}$
+            \end{center}
+        
+            Le point 3) dit que cette action est transitive : il y a une seule orbite. Alos : $\forall s \in X, n=|G|=|Orb_G(s)|\times |Stab_G(s)| = |X|\times |Stab_G(s)|=s_p\times|Stab_G(s)|$
+         
+            \newline
+         
+            Donc $s_p ~|~n$.
+        \end{preuve}
+        
+        
+        \begin{preuve}{du 5)}
+            On fice $s'\in X$, et on considère $\fonction{}{S' \times X}{X}{(g,S)}{gSg^{-1}}$. L'équation aux classes nous donne : 
+        
+            \begin{center}
+                $s_p= |X| = \displaystyle \sum ^N _{i=1}|Orb_{S'}(s_i)|$
+        
+            \end{center}
+        
+            où $S_1, \dots, S_N$ sont des représentants des orbites. Ainsi :
+        
+            \begin{center}
+                $s_p=|Fix|~~~~+\displaystyle \sum ^N _{\underset{Stab_{S'}(s_i)\nsubseteq S'}{i=1}}|Orb_{S'}(s_i)|$.
+            \end{center}
+        
+            Où $Fix = \{ s \in X ~|~gSg^{-1} =S\}$ On remarque alors que $\displaystyle \sum ^N _{\underset{Stab_{S'}(s_i)\nsubseteq S'}{i=1}}|Orb_{S'}(s_i)| = \frac{|S'|}{|Stab_{S'}(s_i)}=\frac{p^\alpha}{p^{\epsilon _i}}$ avec $\epsilon_i < \alpha$. 
+            
+            \newline 
+        
+            Alors $|Orb_{S'}(s_i)|$ est divisible par $p$. On souhaite maintenant montrer que $s_p \equiv 1 ~[p]$. Il suffit de démontrer que $|Fix | =1$. Autrement dit que $Fix = \{S'\}$. Soit $T\in Fix$, en particulier, $T$ est un $p$-sylow. On veut donc montrer que $T = S'$.
+        
+            \bigbreak
+        
+            \textbf{Astuce :} On regarde le sous-groupe engendre par $T$ et $S'$, que l'on note $N$. Alors : $T <N$ et $S'<N$.
+        
+            \remarque $T$ et $S'$ sont des $p$-sylow de $N$. 
+    
+            \bigbreak Ainsi on a : 
+        
+            \begin{center}
+                $\forall a \in T, ~~aTa^{-1}=T~(\text{car }T<N)$ \newline 
+                $\forall a \in S', ~~aTa^{-1}=T~(\text{car }T\in Fix)$
+            \end{center}
+            
+            Alors : $N = <T,S'>, ~~\forall a \in N,~~aTa^{-1}=T$. Ainsi, par le corollaire $T$ est normal dans $N$, donc c'est l'unique $p$-sylow de $N$ d'où $T =S'$. En conclusion $|Fix| = 1$ et  donc $s_p \equiv 1 ~[p]$. 
+            
+        \end{preuve}
+    \end{preuve}
 \end{document}
