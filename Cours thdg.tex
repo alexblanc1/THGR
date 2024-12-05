@@ -1365,13 +1365,13 @@ est injectif.
 
 \underline{Rq :} Il revient au même de demander : $\forall g \in G, (\forall x \in X, g \cdot x = x \Rightarrow g = 1$
 
-\begin{exemples}
+\begin{exemple}
 1) L'action de translation à gauche d'un groupe sur lui-même est fidèle.
 En effet, si $g \in \mathrm{ker} \gamma$, alors $\forall x \in G, g \cdot x = x$ donc $g = g \cdot e = e$.
 
 2) L'action par conjugaison fournit le noyau d'action : $\mathrm{ker} \gamma = \mathrm{Z} (G)$ 
 
-3) \mathrm{SL}_2 (\mathbb{R}) n'agit pas fidèlement sur $\mathbb{H}$. En effet, si $\begin{pmatrix} 
+3) $\mathrm{SL}_2 (\mathbb{R})$ n'agit pas fidèlement sur $\mathbb{H}$. En effet, si $\begin{pmatrix} 
 a & b \\
 c & d 
 \end{pmatrix} \in \mathrm{SL}_2 (\mathbb{R})$, alors : 
@@ -1383,7 +1383,7 @@ c & d
 c = b = 0 \\
 a = d = \pm 1
 \end{cases}$$
-\end{exemples}
+\end{exemple}
 
 \underline{Rq :} On peut toujours se ramener à une action fidèle quitte à quotienter $G$ par le noyau de l'action. 
 
@@ -1434,7 +1434,7 @@ $$\fonction{\phi}{H}{\mathrm{Aut}(N)}{h}{\fonction{\phi_{h}}{N}{N}{x}{hxh^{-1}}}
 
 \begin{exemple}[Groupe diédral]
 $D_n = \{ \underbrace{\mathrm{Id}, r, \dots, rˆ{n_1}}{rotations}, \underbrace{s, \dots, srˆ{n_1}}{symétries} \}$
-On note $N$ le sous-groupe normal engendré par $r$, et on pose $H = \{ \mathrm{Id}, s \}.
+On note $N$ le sous-groupe normal engendré par $r$, et on pose $H = \{ \mathrm{Id}, s \}.$
 Alors $D_n$ est p.s.d.i de $N$ par $H$.
 \end{exemple}
 
@@ -1452,7 +1452,7 @@ On le note $N \rtimes_{\phi} H$.
 \end{prop}
 
 
-\begin{preuve} Il faut vérifier l'associativité, l'existence d'un élèment neutre (qui se trouve être $(1_N, 1_H)$ et l'existence d'un inverse pour chaque élèment : $(x, h)ˆ{-1} = (\phi_{hˆ{-1}} (xˆ{-1}), hˆ{-1})
+\begin{preuve} Il faut vérifier l'associativité, l'existence d'un élèment neutre (qui se trouve être $(1_N, 1_H)$ et l'existence d'un inverse pour chaque élèment : $(x, h)ˆ{-1} = (\phi_{hˆ{-1}} (xˆ{-1}), hˆ{-1})$
 \end{preuve}
 
 \begin{prop}
@@ -1540,7 +1540,17 @@ ou bien $p$ divise $q-1$, dans ce cas $G \simeq \Z / pq\Z$ ou $G \simeq \Z / q\Z
         \item $s_p = 1$ mod $p$, en particulier (d'après 4), on a $s_p \mid m$.
     \end{enumerate}
 \end{theoreme}
-\newpage 
+
+\begin{preuve}
+    \underline{Plan de 1.}
+    \begin{enumerate}
+        \item Soit $|G| = p^{\alpha}m =: n$ Alors $G$ se plonge dans $GL_n(\Z / p\Z)$
+        \item Posons $K = GL_n(\Z / p\Z).$ Alors $K$ possède un $p$-Sylow $\Sigma$, $|K| = p^{\gamma}l, \text{pgcd}(p,l) = 1$
+    \item \underline{Lemme:} Soit $K$ un groupe, $|K| = p^{\gamma}l$, $\text{pgcd}(p,l) = 1$.\\
+    Soit $G'$ sous-groupe de $K$ et soit $\Sigma$ un $p$-Sylow de $K$. Alors il existe $k \in K$ tel que $k \Sigma k^{-1} \cap G'$ est un $p$-Sylow de $G'$.
+    \end{enumerate}
+	
+	\newpage 
     \textbf{1) $G$ possède un $p$-Sylow}. 
     
  
@@ -1759,4 +1769,3 @@ ou bien $p$ divise $q-1$, dans ce cas $G \simeq \Z / pq\Z$ ou $G \simeq \Z / q\Z
         \end{preuve}
     \end{preuve}
 \end{document}
-
