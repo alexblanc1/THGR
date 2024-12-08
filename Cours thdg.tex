@@ -113,7 +113,7 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\znz}{\Z/n\Z}
 \newcommand{\dn}{D_{n}}
-\newcommand{\sn}{\mathcal{S}_{n}}
+\newcommand{\sn}{\mathbb{S}_n}
 \newcommand{\an}{\mathcal{A}_{n}}
 \newcommand{\unn}{\{1, ..., n\}}
 \newcommand{\sign}{\epsilon(\sigma)}
@@ -1560,31 +1560,25 @@ ou bien $p$ divise $q-1$, dans ce cas $G \simeq \Z / pq\Z$ ou $G \simeq \Z / q\Z
 \textbf{Direction artistique :}
     \begin{enumerate}[label=\roman*)]
         \item Soit $|G| = p^{\alpha}m =: n$ Alors $G$ se plonge dans $GL_n(\Z / p\Z)$
-        \item Posons $K = GL_n(\Z / p\Z).$ Alors $K$ possède un $p$-Sylow $\Sigma$, $|K| = p^{\gamma}l$, où $ \text{pgcd}(p,l) = 1$
-    \item \underline{Lemme:} Soit $K$ un groupe, $|K| = p^{\gamma}l$, $\text{pgcd}(p,l) = 1$.\\
+        \item Posons $K = GL_n(\Z / p\Z).$ Alors $K$ possède un $p$-Sylow $\dsp \Sigma$, $|K| = p^{\gamma}l$, où $\dsp \text{pgcd}(p,l) = 1$
+    \item \underline{Lemme:} Soit $K$ un groupe tel que, $|K| = p^{\gamma}l$, $\text{pgcd}(p,l) = 1$.\par 
     Soit $G'$ sous-groupe de $K$ et soit $\Sigma$ un $p$-Sylow de $K$. Alors il existe $k \in K$ tel que $k \Sigma k^{-1} \cap G'$ est un $p$-Sylow de $G'$.
     \end{enumerate}
 
 
-\subsection{G se plonge dans $GL_n(\Z / p\Z)$}
-Soit $G \overset{\text{Cayley}}{\hookrightarrow} \mathbb{S}_n \overset{\phi}{\hookrightarrow} GL_n \left( \Z / p\Z \right) $ tel que pour $\sigma \in\mathbb{S}_n $, on a $\phi (\sigma)=Mat(u_\sigma)$. Considérons $(e_1, ...e_n) $ la base canonique de $\left( \Z / p\Z \right) ^n$, soit $\sigma \in \mathbb{S}_n$, on pose : 
-        
-        \begin{center}
-            $u_\sigma = \left\{
+\subsection*{G se plonge dans $GL_n(\Z / p\Z)$}
+
+G se plonge dans $\sn$ par le plongement de Caley. On considère ensuite :
+\begin{center}
+$\dsp \fonction{\phi}{\sn}{GL_n \left( \Z / p\Z \right)}{\sigma}{u_{\sigma}}$ où $u_{\sigma}$ désigne l'application : $u_\sigma = \left\{
             \begin{array}{ll}
                 \left( \Z /p\Z \right) ^n \longrightarrow \left( \Z /p\Z \right) ^n& \\
                 u_\sigma (e_i)=e_{\sigma(i)}& 
             \end{array}
         \right.$
-        \end{center}
+\end{center}
+Quand $(e_1, ...e_n) $  est la base canonique de $\left( \Z / p\Z \right) ^n$ et $u_{\sigma}$ un application linéaire.\par Il suffit alors de montrer que $\phi$ est un morphisme injectif (exercice laissé au lecteur) et de composer ces deux plongement pour obtenir le résultat voulu.
 
-        
-        \begin{exo}
-            Montrer que $\phi$ est un morphisme injectif. 
-        \end{exo}
-
-    	
-    	\vspace{1cm}
 
 \subsection{$GL_n\left( \Z /p\Z \right) $ possède un $p$-Sylow}     
 \begin{enumerate}
