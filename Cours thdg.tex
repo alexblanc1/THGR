@@ -1881,8 +1881,155 @@ On pose $function{f}{N* H}{NH}{(x^{a},h^{b})}{x^{a}h^{b}}$
 \end{itemize}
 
 
+\end{preuve}
+
+
+
+
+
+
+
+\section{Classification des groupes d'ordre pq}
+
+
+\begin{theoreme}
+Soit G un groupe d'ordre pq, avec p et q premiers.
+\begin{itemize}[label = -]
+\item Si p ne divise pas q-1, alors : $\dsp G \simeq \Z/q\Z \times \Z/p\Z$
+\item Si p divise q-1 alors, soit $\dsp G \simeq \Z/q\Z \times \Z/p\Z$, soit :\par
+	$\exists \alpha : \Z/p\Z \longrightarrow Aut(\Z/q\Z)$ non trivial tel que $G \simeq \Z/q\Z \rtimes_{\alpha} \Z/p\Z$
+\end{itemize}
+
+De plus si,$\alpha ,\beta : \Z/p\Z \longrightarrow Aut(\Z/q\Z) $ sont non triviaux alors : $\Z/q\Z \rtimes_{\alpha} \Z/p\Z \simeq \Z/q\Z \rtimes_{\beta} \Z/p\Z $
+
+\end{theoreme}
+
+
+insere prop manquate
+
+\begin{preuve} Du théorème
+\underline{Premier cas} :\par
+\underline{Etude des q-Sylow} :
+
+$S_{q}\equiv 1(q)$ et  $S_{q} | p$ $\Longleftarrow S_{q} = 1$. Donc il existe un unique q-Sylow, il est distingué dans G, notons le N
+
+
+Il existe un p-Sylow noté H. G est produit semi direct (interne) de N par H :
+\begin{itemize}
+\item $N\triangleleft G$ on l'a déjà
+\item $N\cap H = \{e\}$ car si $g \in N\cap H$, alors $o(g)|p$ et $o(g)|q$ donc $o(g)=1$
+\item G=NH :\par 
+On pose $\fonction{f}{N* H}{NH}{(x^{a},h^{b})}{x^{a}h^{b}}$
+\end{itemize}
+
+\underline{Deuxième cas}:\\
 
 \end{preuve}
 
+On peut donc compléter notre classification:
+\\
+
+$\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+   |G|  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+   \hline
+    \textrm{Nb de sg}  & 1 & 1 & 1 & 2 & 1 & 2 & 1 & 5 & 2 & 2 & 1 & 5 & 1 & 2 & 1 \\
+    \hline
+\end{array}$
+
+\subsection{Caractérisation de $\mathrm{Aut}(\Z / p\Z)$ et mêm de $\mathrm{Aut}(\Z / n\Z$}
+
+\begin{prop}
+    Soit $n\in\N^*$. L'application $\fonction{\Psi}{(\Z / n\Z)^{\times},\times)}{(\mathrm{Aut}(\Z/n\Z),\circ)}{s}{\fonction{\Psi_s}{\Z/n\Z}{\Z/n\Z}{c}{cs}}$ est un ismorphisme.
+\end{prop}
+
+\begin{corollaire}
+    Si $n = q$ un nombre premier, alors $$(\mathrm{Aut}(\Z/q\Z),\circ) \simeq ((\Z/q\Z)^{\times},\times) \simeq (\Z/(q-1)\Z,+)$$ (cf TD), et si $p$ divise $q-1$ alors ce groupe possède un unique sous-groupe d'ordre p.
+\end{corollaire}
+
+\begin{preuve}
+    Preuve de la proposition.\\
+    $\Psi$ est bien un morphisme de groupes.\\
+    Pour tout $s\in(\Z/n\Z)^{\times}, \Psi_s \in\mathrm{Aut}(\Z/n\Z)$.\\
+    Reste à montrer que $\Psi$ est injectif et surjectif.\\
+    \underline{$\Psi$ injectif}:\\
+    $\mathrm{ker}(\Psi) = \{s\in(\Z/n\Z)^{\times},\Psi_s = \mathrm{Id}\}$.\\
+    \underline{surjectivité}:\\
+    Soit $\varphi\in\mathrm{Aut}(\Z/n\Z,+)$, c'est un morphisme bijectif de $(\Z/n\Z,+)$.\\
+    $\forall c\in\{0,...,n-1\}, \varphi(\overline{c}) = \varphi(\overline{1} + ... + \overline{1}) = c\varphi(\overline{1}) = \overline{c}\varphi(\overline{1})$\\
+    Est-ce que $\varphi(\overline{1})$ joue le rôle de $s$ ?\\
+    Oui !!! Car $\varphi \in\mathrm{Aut}(\Z/n\Z)$, $\varphi$ permute les éléments de $(\Z/n\Z)^{\times}$. Comme $\overline{1}\in(\Z/n\Z)^{\times}$, on a bien $\varphi(\overline{1})\in(\Z/n\Z)^{\times}$. Cela établit la surjectivité de $\Psi$.
+\end{preuve}
+
+\subsection{Sur les morphismes $\alpha : \Z/p\Z \mapsto \mathrm{Aut}(\Z/q\Z)$}
+
+\begin{prop}
+    \begin{itemize}
+        \item Ou bien $p$ ne divise pas $q-1$, dans ce cas $\alpha$ est trivial 
+        \item ou bien $p$ divise $q-1$, alors ou bien $\alpha$ est trivial, ou bien $\alpha$ est injectif et son image est l'unique sous-groupe d'ordre p dans $\mathrm{Aut}(\Z/q\Z)$
+    \end{itemize}
+\end{prop}
+
+\begin{preuve}
+    $o(\alpha(\overline{1})$ divise $o(\overline{1}) = p$ et divise $|\mathrm{Aut}(\Z/q\Z)| = q-1$.\\
+    Si $p$ ne divise pas $q-1$, alors $o(\alpha(\overline{1})) = 1$, et dans ce cas $\alpha$ est trivial.\\
+    Si $p$ divise $q-1$, on a les deux possibilités : $o(\overline{\alpha(\overline{1})}) = 1$ ou $o(\alpha(\overline{1})) = p$.\\
+    Dans le permier cas, $\alpha$ est trivial, dans le deuxième cas, $\alpha$ est alors injectif et comme $|\mathrm{im}(\alpha)| = p$, $\mathrm{im}(\alpha)$ est bien l'unique sous-groupe d'ordre $p$ de $\mathrm{Aut}(\Z/q\Z)$
+\end{preuve}
+
+\begin{prop}
+    Soient $\alpha,\beta : (\Z/p\Z,+) \mapsto (\mathrm{Aut}(K),\circ)$ (où $K$ est un groupe général) deux morphismes.\\
+    Si $\mathrm{im}(\alpha) = \mathrm{im}(\beta)$, alors il existe $\rho\in\mathrm{Aut}(\Z/p\Z)$ tel que $\beta = \alpha\circ\rho$.
+\end{prop}
+
+\begin{corollaire}
+    Soient $\alpha,\beta : (\Z/p\Z,+) \mapsto (\mathrm{Aut}(\Z/q\Z),\circ)$ deux morphismes non triviaux. \\
+    Alors $\Z/q\Z \rtimes_\alpha \Z/p\Z \simeq \Z/q\Z \rtimes_\beta \Z/p\Z$.
+\end{corollaire}
+
+\begin{preuve}
+    Pour montrer que les deux p.s.d isomorphes, il suffit de montrer que $\mathrm{im}(\alpha) = \mathrm{im}(\beta)$ (utiliser ici la proposition 2 et un exercice du TD).\\
+    Comme $\alpha$ est non trivial, on a $\mathrm{ker}(\alpha) \neq \Z/p\Z$. Mais $\Z/p\Z$ ne possède que deux sous-groupes. Donc $\mathrm{ker}(\alpha) = \{e\}$. De même $\mathrm{ker}(\beta) = \{e\}$.\\
+    Ainsi $|\im(\alpha)| = |\im(\beta)| = |\Z/p\Z| = p$. Donc les deux sous-groupes $\im(\alpha),\im(\beta)$ de $\mathrm{Aut}(\Z/q\Z)$ coincident avec l'unique sous-groupe d'ordre $p$ de $\mathrm{Aut}(\Z/q\Z) \simeq (\Z/(q-1)\Z,+)$.
+\end{preuve}
+
+\begin{preuve}
+    Comme $\im(\alpha) = \im(\beta)$ par hypothèse, $\alpha$ et $\beta$ sont simultanément triviaux ou pas.\\
+    \underline{Permier cas}:\\
+    Si $\alpha$ et $\beta$ sont triviaux, alors on peut prendre $\rho = \mathrm{Id}$, on a bien $\beta = \alpha \circ \rho$.\\
+    \underline{Deuxième cas}:\\
+    $\alpha,\beta$ ne sont pas tous les deux triviaux.\\
+    Si j'appelle $J = \im(\alpha) = \im(\beta)$, on a $J \simeq \Z/p\Z$ (le voir comme un "autre" $\Z/p\Z)$. On a $\alpha(\overline{1}) \neq \overline{0}$ dans $\Z/p\Z$ car $\alpha$ n'est pas trivial.\\
+    Donc $\alpha(\overline{1})$ est un générateur de $(\Z/p\Z,+)$. Mais $\beta(\overline{1})\in \Z/p\Z$, donc il existe $k\in\{0,...,p-1\}$ tel que $\beta(\overline{1}) = k\alpha(\overline
+    {1})$. Mais $\beta(\overline{1}) \neq 0$, donc $k\in\{0,...,p-1\}$.\\
+    Posons $\fonction{\rho}{\Z/p\Z}{\Z/p\Z}{\overline{b}}{\overline{b}\times\overline{k}}$. Alors $\rho\in\mathrm{Aut}(\Z/p\Z)$, car $\overline{k}\in(\Z/p\Z)^{\times}$. De plus, $\alpha\circ\rho{\overline(1)} = \alpha(\overline{k} = k\alpha(\overline{1}) = \beta(\overline{1})$. Donc $\alpha\circ\rho = \beta$.
+\end{preuve}
+
+\subsection{Compléments}
+
+\begin{prop}
+    Soit $n\in\N\setminus\{0,1,2\}$, avec $n \neq 6$. Alors $\mathrm{Aut}(\mathfrak{S}_n) = \mathrm{Int}(\mathfrak{S}_n \simeq \mathfrak{S}_n$.\\
+    Autrement dit : $\forall \rho\in\mathrm{Aut}(\mathfrak{S}_n),\exists ! \sigma\in\mathfrak{S}_n$ tel que $\rho(\eta) = \sigma\eta\sigma^{-1}$ ("Tout autour de $\mathfrak{S}_n$ est intérieur")\\
+    Si $n = 6$, alors $[\mathrm{Aut}(\mathfrak{S}_n);\mathrm{Int}(\mathfrak{S}_n)] = 2$.
+\end{prop}
+
+\remarque
+Voir Perrin.
+
+$J_k := \{\eta \in S_n, \eta \textrm{ est un produit de } k \textrm{ transpositions à support disjoints}\}$.
+
+\begin{lemme}
+    Soit $\rho\in\mathrm{Aut}(S_n)$.
+    \begin{itemize}
+        \item $\exists k\in\N^*, \rho(J_k) =J_k$
+        \item $\rho\in\mathrm{Int}(S_n) \iff \rho(J_1) = J_1$
+    \end{itemize}
+\end{lemme}
+
+\begin{lemme}
+    Soit $n \geq 1, k\geq 2$ tel que $n \geq 2k$.\\
+    Soit $\rho \in\mathrm{Aut}(S_n)$.\\
+    Alors $\rho(J_1) = J_k$ implique $n = 6$ et $k = 3$.
+\end{lemme}
 
 \end{document}
